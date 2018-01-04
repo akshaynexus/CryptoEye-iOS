@@ -93,75 +93,7 @@ NSMutableArray *marketcap;
             }
             self.formatter = [[NSDateFormatter alloc] init];
             [self.formatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"yyyyMMMd" options:0 locale:[NSLocale currentLocale]]];
-           d = [LCLineChartData new];
-            d.xMin = [[price4graphdata valueForKeyPath:@"@min.self"] doubleValue];
-            d.xMax =[[price4graphdata valueForKeyPath:@"@max.self"] doubleValue];
-            d.title = @"The title for the legend";
-            d.color = [UIColor greenColor];
-            d.itemCount = [price4graphdata count];
-            NSMutableArray *vals = [NSMutableArray new];
-            LCLineChartData *d1x = ({
-                LCLineChartData *d1 = [LCLineChartData new];
-                // el-cheapo next/prev day. Don't use this in your Real Code (use NSDateComponents or objc-utils instead)
-                NSDate *date1 = [[NSDate date] dateByAddingTimeInterval:((-3) * SECS_PER_DAY)];
-                NSDate *date2 = [[NSDate date] dateByAddingTimeInterval:((2) * SECS_PER_DAY)];
-                d1.xMin = [date1 timeIntervalSinceReferenceDate];
-                d1.xMax = [date2 timeIntervalSinceReferenceDate];
-                d1.title = @"Foobarbang";
-                d1.color = [UIColor redColor];
-                d1.itemCount = [price4graphdata count];
-                NSMutableArray *arr = [NSMutableArray array];
-                for(NSUInteger i = 0; i < 4; ++i) {
-                    [arr addObject:@(d1.xMin + (rand() / (float)RAND_MAX) * (d1.xMax - d1.xMin))];
-                }
-                [arr addObject:@(d1.xMin)];
-                [arr addObject:@(d1.xMax)];
-                [arr sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                    return [obj1 compare:obj2];
-                }];
-                NSMutableArray *arr2 = [NSMutableArray array];
-                for(NSUInteger i = 0; i < 6; ++i) {
-                    [arr2 addObject:@((rand() / (float)RAND_MAX) * 6)];
-                }
-                d1.getData = ^(NSUInteger item) {
-                    float x = [arr[item] floatValue];
-                    if([price4graphdata count] >0){
-                       y =[price4graphdata objectAtIndex:item];
-                    }
-                    else{
-                     y = @"0";
-                    }
-                        NSString *label1 = [self.formatter stringFromDate:[date1 dateByAddingTimeInterval:x]];
-                    NSString *label2 = [NSString stringWithFormat:@"%f", [y floatValue]];
-                    return [LCLineChartDataItem dataItemWithX:x y:[y floatValue] xLabel:label1 dataLabel:label2];
-                };
-                
-                d1;
-            });
-
-          
-//            for(NSUInteger i = 0; i < d.itemCount; ++i) {
-//                [vals addObject:@((rand() / (float)RAND_MAX) * (31 - 1) + 1)];
-//            }
-//            [vals sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-//                return [obj1 compare:obj2];
-//            }];
-            d.getData = ^(NSUInteger item) {
-                float x = [vals[item] floatValue];
-                float y = [time4graph[item] floatValue];
-                NSString *label1 = [NSString stringWithFormat:@"%lu", (unsigned long)item];
-                NSString *label2 = [NSString stringWithFormat:@"%f", y];
-                return [LCLineChartDataItem dataItemWithX:x y:y xLabel:label1 dataLabel:label2];
-            };
-            LCLineChartView *chartView = [[LCLineChartView alloc] initWithFrame:self.refView4Chart.frame];
-            chartView.yMin = 0;
-            chartView.yMax = powf(2, 31 / 7) + 0.5;
-            chartView.ySteps = @[@"0.0",
-                                 [NSString stringWithFormat:@"%.02f", chartView.yMax / 2],
-                                 [NSString stringWithFormat:@"%.02f", chartView.yMax]];
-            chartView.data = @[d1x];
-            
-            [self.view addSubview:chartView];
+      
 }
     }
 }
