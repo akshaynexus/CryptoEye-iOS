@@ -1,0 +1,6 @@
+framework module ios_versioncheck {
+  umbrella header "ios-versioncheck-umbrella.h"
+
+  export *
+  module * { export * }
+}

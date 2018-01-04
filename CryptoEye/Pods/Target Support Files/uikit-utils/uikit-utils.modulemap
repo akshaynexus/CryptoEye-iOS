@@ -1,0 +1,6 @@
+framework module uikit_utils {
+  umbrella header "uikit-utils-umbrella.h"
+
+  export *
+  module * { export * }
+}
