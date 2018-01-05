@@ -257,7 +257,7 @@ NSMutableArray *marketcap;
         }
         else {
             [self stoploader];
-      
+    
          
             NSLog(@"it is a dictionary");
             NSDictionary *jsonDictionary = (NSDictionary *)jsonObject;
@@ -271,11 +271,12 @@ NSMutableArray *marketcap;
 
 #pragma Mark CreateLineGraph
 - (void)createLineGraph{
-
+   [graph setDataSource:NULL];
     [graph setDelegate:self];
     [graph setDataSource:self];
     [graph setLegendViewType:LegendTypeHorizontal];
     [graph setShowCustomMarkerView:TRUE];
+ 
     [graph drawGraph];
     [self.view addSubview:graph];
 }
@@ -290,28 +291,12 @@ NSMutableArray *marketcap;
         case 0:
             return LineDefault;
             break;
-        case 1:
-            return LineDefault;
-            break;
-        case 2:
-            return LineDefault;
-            break;
-        case 3:
-            return LineParallelXAxis;
-            break;
-        case 4:
-            return LineParallelYAxis;
-            break;
-        default:
-            break;
     }
     return LineDefault;
 }
 
 - (UIColor *)colorForTheLineWithLineNumber:(NSInteger)lineNumber{
-    NSInteger aRedValue = arc4random()%255;
-    NSInteger aGreenValue = arc4random()%255;
-    NSInteger aBlueValue = arc4random()%255;
+
     UIColor *randColor = [UIColor colorWithRed:0/255.0f green:255/255.0f blue:0/255.0f alpha:1.0f];
     return randColor;
 }
@@ -329,18 +314,6 @@ NSMutableArray *marketcap;
         case 0:
             return false;
             break;
-        case 1:
-            return true;
-            break;
-        case 2:
-            return false;
-            break;
-        case 3:
-            return false;
-            break;
-        case 4:
-            return true;
-            break;
         default:
             break;
     }
@@ -351,18 +324,6 @@ NSMutableArray *marketcap;
     switch (lineNumber) {
         case 0:
             return true;
-            break;
-        case 1:
-            return false;
-            break;
-        case 2:
-            return false;
-            break;
-        case 3:
-            return false;
-            break;
-        case 4:
-            return false;
             break;
         default:
             break;
@@ -388,38 +349,7 @@ NSMutableArray *marketcap;
             return array;
         }
             break;
-        case 1:
-        {
-            NSMutableArray *array = [[NSMutableArray alloc] init];
-            for (int i = 0; i < 10; i++) {
-                [array addObject:[NSNumber numberWithLong:random() % 100]];
-            }
-            return array;
-        }
-            break;
-        case 2:
-        {
-            NSMutableArray *array = [[NSMutableArray alloc] init];
-            for (int i = 0; i < 30; i++) {
-                [array addObject:[NSNumber numberWithLong:random() % 50]];
-            }
-            return array;
-        }
-            break;
-        case 3:
-        {
-            NSMutableArray *array = [[NSMutableArray alloc] init];
-            [array addObject:[NSNumber numberWithLong:random() % 100]];
-            [array addObject:[NSNumber numberWithLong:random() % 100]];
-            return array;
-        }
-            break;
-        case 4:
-        {
-            NSMutableArray *array = [[NSMutableArray alloc] init];
-            return array;
-        }
-            break;
+      
         default:
             break;
     }
@@ -442,41 +372,7 @@ NSMutableArray *marketcap;
             return array;
         }
             break;
-        case 1:
-        {
-            NSMutableArray *array = [[NSMutableArray alloc] init];
-            for (int i = 1; i <= 30; i++) {
-                [array addObject:[NSString stringWithFormat:@"%d Jun", i]];
-            }
-            return array;
-        }
-            break;
-        case 2:
-        {
-            NSMutableArray *array = [[NSMutableArray alloc] init];
-            for (int i = 1; i <= 30; i++) {
-                [array addObject:[NSString stringWithFormat:@"%d Jun", i]];
-            }
-            return array;
-        }
-            break;
-        case 3:
-        {
-            NSMutableArray *array = [[NSMutableArray alloc] init];
-            for (int i = 1; i <= 30; i+=10) {
-                [array addObject:[NSString stringWithFormat:@"%d Jun", i]];
-            }
-            return array;
-        }
-            break;
-        case 4:
-        {
-            NSMutableArray *array = [[NSMutableArray alloc] init];
-            [array addObject:@"6 Jun"];
-            [array addObject:@"28 Jun"];
-            return array;
-        }
-            break;
+       
         default:
             break;
     }
@@ -561,27 +457,58 @@ NSMutableArray *marketcap;
 
 
 - (IBAction)daybtn:(id)sender {
+    BOOL doesContain = [self.view.subviews containsObject:graph];
+    if(doesContain){
+        [graph removeFromSuperview];
+    }
      [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"1day"];
+        [graph reloadGraph];
 }
 
 - (IBAction)day7btn:(id)sender {
+    BOOL doesContain = [self.view.subviews containsObject:graph];
+    if(doesContain){
+        [graph removeFromSuperview];
+    }
      [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"7day"];
+        [graph reloadGraph];
 }
 
 - (IBAction)month1btn:(id)sender {
-     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"30day"];
-}
+    BOOL doesContain = [self.view.subviews containsObject:graph];
+    if(doesContain){
+        [graph removeFromSuperview];
+    }
+    [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"30day"];
+     [graph reloadGraph];
+    }
+
 
 - (IBAction)month3btn:(id)sender {
+    BOOL doesContain = [self.view.subviews containsObject:graph];
+    if(doesContain){
+        [graph removeFromSuperview];
+    }
      [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"90day"];
+        [graph reloadGraph];
 }
 
 - (IBAction)month6btn:(id)sender {
+    BOOL doesContain = [self.view.subviews containsObject:graph];
+    if(doesContain){
+        [graph removeFromSuperview];
+    }
      [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"180day"];
+         [graph reloadGraph];
 }
 
 - (IBAction)year1btn:(id)sender {
+    BOOL doesContain = [self.view.subviews containsObject:graph];
+    if(doesContain){
+        [graph removeFromSuperview];
+    }
      [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"360day"];
+        [graph reloadGraph];
 }
 - (IBAction)alldatabtn:(id)sender {
 }
