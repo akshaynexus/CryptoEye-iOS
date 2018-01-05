@@ -84,6 +84,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/MDFInternationalization/MDFInternationalization.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MDFTextAccessibility/MDFTextAccessibility.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MaterialComponents/MaterialComponents.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MotionAnimator/MotionAnimator.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MotionInterchange/MotionInterchange.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MotionTransitioning/MotionTransitioning.framework"
   install_framework "$BUILT_PRODUCTS_DIR/drCharts/drCharts.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ios-linechart/ios_linechart.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ios-versioncheck/ios_versioncheck.framework"
@@ -91,6 +97,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/uikit-utils/uikit_utils.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/MDFInternationalization/MDFInternationalization.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MDFTextAccessibility/MDFTextAccessibility.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MaterialComponents/MaterialComponents.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MotionAnimator/MotionAnimator.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MotionInterchange/MotionInterchange.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MotionTransitioning/MotionTransitioning.framework"
   install_framework "$BUILT_PRODUCTS_DIR/drCharts/drCharts.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ios-linechart/ios_linechart.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ios-versioncheck/ios_versioncheck.framework"

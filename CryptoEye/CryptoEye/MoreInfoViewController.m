@@ -17,6 +17,7 @@
     NSMutableArray *coinid;
     NSMutableArray *onedayvol;
     MultiLineGraphView *graph;
+    NSString *graphapi;
 NSMutableArray *marketcap;
     NSMutableArray *price;
     NSMutableArray *cirsupply;
@@ -60,15 +61,29 @@ NSMutableArray *marketcap;
     
 }
 -(void)getgraphdata:(NSString*)his_dur{
-    switch (his_dur) {
-        case <#constant#>:
-            <#statements#>
-            break;
-            
-        default:
-            break;
+    if([his_dur isEqualToString:@"1day"]){
+       graphapi = [NSString stringWithFormat:@"http://www.coincap.io/history/1day/%@",self.coinshrt];
     }
-    NSString *graphapi = [NSString stringWithFormat:@"http://www.coincap.io/history/1day/%@",self.coinshrt];
+    else if ([his_dur isEqualToString:@"7day"]){
+        graphapi = [NSString stringWithFormat:@"http://www.coincap.io/history/7day/%@",self.coinshrt];
+    }
+    else if ([his_dur isEqualToString:@"30day"]){
+      graphapi = [NSString stringWithFormat:@"http://www.coincap.io/history/30day/%@",self.coinshrt];
+    }
+    else if ([his_dur isEqualToString:@"90day"]){
+       graphapi = [NSString stringWithFormat:@"http://www.coincap.io/history/90day/%@",self.coinshrt];
+    }
+    else if ([his_dur isEqualToString:@"180day"]){
+     graphapi = [NSString stringWithFormat:@"http://www.coincap.io/history/180day/%@",self.coinshrt];
+    }
+    else if ([his_dur isEqualToString:@"360day"]){
+       graphapi = [NSString stringWithFormat:@"http://www.coincap.io/history/360day/%@",self.coinshrt];
+    }
+    else {
+         graphapi = [NSString stringWithFormat:@"http://www.coincap.io/history/1day/%@",self.coinshrt];
+    }
+    
+ 
     NSString *url = graphapi;
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
@@ -85,7 +100,12 @@ NSMutableArray *marketcap;
         NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
         id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
         if (error) {
-            NSLog(@"Error parsing JSON: %@", error);
+            UILabel *label = [[UILabel alloc]initWithFrame:self.refView4Chart.frame];
+            label.textColor = [UIColor whiteColor];
+            label.text = [NSString stringWithFormat:@"No graph data for %@",self.coinlabel.text];
+            label.textAlignment = NSTextAlignmentCenter;
+            
+            [self.view addSubview:label];
         }
         else
         {
@@ -175,7 +195,7 @@ NSMutableArray *marketcap;
             per7d = [jsonArray valueForKey: @"percent_change_7d"];
             symbol = [jsonArray valueForKey: @"symbol"];
            
-             [self performSelectorInBackground:@selector(getgraphdata) withObject:NULL];
+             [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"1day"];
 
             self.pricelabel.text = [NSString stringWithFormat:@"$%@",price[0]];
             self.marketcaplabel.text = [NSString stringWithFormat:@"$%@",marketcap[0]];
@@ -519,4 +539,29 @@ NSMutableArray *marketcap;
 
 
 
+- (IBAction)daybtn:(id)sender {
+     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"1day"];
+}
+
+- (IBAction)day7btn:(id)sender {
+     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"7day"];
+}
+
+- (IBAction)month1btn:(id)sender {
+     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"30day"];
+}
+
+- (IBAction)month3btn:(id)sender {
+     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"90day"];
+}
+
+- (IBAction)month6btn:(id)sender {
+     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"180day"];
+}
+
+- (IBAction)year1btn:(id)sender {
+     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"360day"];
+}
+- (IBAction)alldatabtn:(id)sender {
+}
 @end

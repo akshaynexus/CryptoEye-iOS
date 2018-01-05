@@ -26,4 +26,13 @@
 @property (strong, nonatomic) IBOutlet UIView *refView4Chart;
 @property (nonatomic,strong) NSNumber *intt;
 @property (nonatomic,strong) NSDateFormatter *formatter;
+- (IBAction)daybtn:(id)sender;
+- (IBAction)day7btn:(id)sender;
+- (IBAction)month1btn:(id)sender;
+- (IBAction)month3btn:(id)sender;
+- (IBAction)month6btn:(id)sender;
+- (IBAction)year1btn:(id)sender;
+- (IBAction)alldatabtn:(id)sender;
+
+
 @end
