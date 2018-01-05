@@ -33,6 +33,13 @@
 - (IBAction)month6btn:(id)sender;
 - (IBAction)year1btn:(id)sender;
 - (IBAction)alldatabtn:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *btn1;
+@property (strong, nonatomic) IBOutlet UIButton *btn2;
+@property (strong, nonatomic) IBOutlet UIButton *btn3;
+@property (strong, nonatomic) IBOutlet UIButton *btn4;
+@property (strong, nonatomic) IBOutlet UIButton *btn5;
+@property (strong, nonatomic) IBOutlet UIButton *btn6;
+@property (strong, nonatomic) IBOutlet UIButton *btn7;
 
 
 @end

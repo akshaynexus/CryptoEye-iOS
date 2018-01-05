@@ -9,6 +9,7 @@
 #import "MoreInfoViewController.h"
 @import Lottie;
 @import drCharts;
+@import MaterialComponents;
 #define SECS_PER_DAY (86400)
 @interface MoreInfoViewController ()
 {
@@ -48,6 +49,7 @@ NSMutableArray *marketcap;
     
 }
 -(void)viewDidAppear:(BOOL)animated{
+
     self.webView.delegate = self;
    [self showloader];
     tickerapi = @"https://api.coinmarketcap.com/v1/ticker/";
@@ -106,9 +108,28 @@ NSMutableArray *marketcap;
             label.textAlignment = NSTextAlignmentCenter;
             
             [self.view addSubview:label];
+            MDCSnackbarMessage *message = [[MDCSnackbarMessage alloc] init];
+            message.text = label.text;
+            [MDCSnackbarManager showMessage:message];
+            self.btn1.hidden = YES;
+              self.btn2.hidden = YES;
+              self.btn3.hidden = YES;
+                     self.btn4.hidden = YES;
+                     self.btn5.hidden = YES;
+                     self.btn6.hidden = YES;
+                     self.btn7.hidden = YES;
+
         }
         else
         {
+            self.btn1.hidden = NO;
+            self.btn2.hidden = NO;
+            self.btn3.hidden = NO;
+            self.btn4.hidden = NO;
+            self.btn5.hidden = NO;
+            self.btn6.hidden = NO;
+            self.btn7.hidden = NO;
+            self.refView4Chart.hidden = NO;
             price4graphdata = [[NSMutableArray alloc] init];
                   time4graph = [[NSMutableArray alloc] init];
             self.intt = 0;
@@ -291,7 +312,7 @@ NSMutableArray *marketcap;
     NSInteger aRedValue = arc4random()%255;
     NSInteger aGreenValue = arc4random()%255;
     NSInteger aBlueValue = arc4random()%255;
-    UIColor *randColor = [UIColor colorWithRed:aRedValue/255.0f green:aGreenValue/255.0f blue:aBlueValue/255.0f alpha:1.0f];
+    UIColor *randColor = [UIColor colorWithRed:0/255.0f green:255/255.0f blue:0/255.0f alpha:1.0f];
     return randColor;
 }
 
