@@ -16,6 +16,7 @@
      NSArray *jsonArray2;
     NSMutableArray *coinid;
     NSMutableArray *onedayvol;
+    MultiLineGraphView *graph;
 NSMutableArray *marketcap;
     NSMutableArray *price;
     NSMutableArray *cirsupply;
@@ -54,11 +55,19 @@ NSMutableArray *marketcap;
     self.idlabel.text = self.idstr;
     //setting data from the recived vals from tableview
       [self getid4api];
-  
+   graph = [[MultiLineGraphView alloc] initWithFrame:self.refView4Chart.frame];
     // Do any additional setup after loading the view.
     
 }
--(void)getgraphdata{
+-(void)getgraphdata:(NSString*)his_dur{
+    switch (his_dur) {
+        case <#constant#>:
+            <#statements#>
+            break;
+            
+        default:
+            break;
+    }
     NSString *graphapi = [NSString stringWithFormat:@"http://www.coincap.io/history/1day/%@",self.coinshrt];
     NSString *url = graphapi;
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -91,7 +100,7 @@ NSMutableArray *marketcap;
                    [time4graph addObject:[tempObject objectAtIndex:0]];
                 [price4graphdata addObject:[tempObject objectAtIndex:1]];
             }
-             [self createLineGraph];
+                        [self performSelectorInBackground:@selector(createLineGraph) withObject:NULL];
             self.formatter = [[NSDateFormatter alloc] init];
             [self.formatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"yyyyMMMd" options:0 locale:[NSLocale currentLocale]]];
            
@@ -153,7 +162,7 @@ NSMutableArray *marketcap;
         if ([jsonObject isKindOfClass:[NSArray class]])
         {
             [self stoploader];
-           
+        
             jsonArray = (NSArray *)jsonObject;
             //setting individual array data
             coinid  =[jsonArray valueForKey: @"id"];
@@ -166,8 +175,8 @@ NSMutableArray *marketcap;
             per7d = [jsonArray valueForKey: @"percent_change_7d"];
             symbol = [jsonArray valueForKey: @"symbol"];
            
-               [self getgraphdata];
-            
+             [self performSelectorInBackground:@selector(getgraphdata) withObject:NULL];
+
             self.pricelabel.text = [NSString stringWithFormat:@"$%@",price[0]];
             self.marketcaplabel.text = [NSString stringWithFormat:@"$%@",marketcap[0]];
             self.cirsupplylabel.text = [NSString stringWithFormat:@"%@",cirsupply[0]];
@@ -221,7 +230,7 @@ NSMutableArray *marketcap;
 
 #pragma Mark CreateLineGraph
 - (void)createLineGraph{
-    MultiLineGraphView *graph = [[MultiLineGraphView alloc] initWithFrame:self.refView4Chart.frame];
+
     [graph setDelegate:self];
     [graph setDataSource:self];
     [graph setLegendViewType:LegendTypeHorizontal];
@@ -498,7 +507,7 @@ NSMutableArray *marketcap;
     str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"%@",str);
     tickerapi = [NSString stringWithFormat:@"%@%@",tickerapi,str];
-    [self getcoins];
+        [self performSelectorInBackground:@selector(getcoins) withObject:NULL];
     }
 
 
