@@ -1,9 +1,9 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO
-FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/ios-linechart" "$PODS_CONFIGURATION_BUILD_DIR/ios-versioncheck" "$PODS_CONFIGURATION_BUILD_DIR/lottie-ios" "$PODS_CONFIGURATION_BUILD_DIR/uikit-utils"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/drCharts" "$PODS_CONFIGURATION_BUILD_DIR/ios-linechart" "$PODS_CONFIGURATION_BUILD_DIR/ios-versioncheck" "$PODS_CONFIGURATION_BUILD_DIR/lottie-ios" "$PODS_CONFIGURATION_BUILD_DIR/uikit-utils"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/ios-linechart/ios_linechart.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/ios-versioncheck/ios_versioncheck.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/lottie-ios/Lottie.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/uikit-utils/uikit_utils.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "Lottie" -framework "ios_linechart" -framework "ios_versioncheck" -framework "uikit_utils"
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/drCharts/drCharts.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/ios-linechart/ios_linechart.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/ios-versioncheck/ios_versioncheck.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/lottie-ios/Lottie.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/uikit-utils/uikit_utils.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "Lottie" -framework "drCharts" -framework "ios_linechart" -framework "ios_versioncheck" -framework "uikit_utils"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_ROOT = ${SRCROOT}/Pods

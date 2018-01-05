@@ -5,9 +5,9 @@
 //  Created by Akshay on 12/12/17.
 //  Copyright © 2017 Akshay. All rights reserved.
 //
-
+@import drCharts;
 #import "ViewController.h"
-@interface MoreInfoViewController : ViewController<UIWebViewDelegate>
+@interface MoreInfoViewController : ViewController<UIWebViewDelegate,MultiLineGraphViewDelegate,MultiLineGraphViewDataSource>
 @property (strong, nonatomic) IBOutlet UIImageView *coinimage;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UILabel *idlabel;

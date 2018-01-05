@@ -8,7 +8,7 @@
 
 #import "MoreInfoViewController.h"
 @import Lottie;
-#import "LCLineChartView.h"
+@import drCharts;
 #define SECS_PER_DAY (86400)
 @interface MoreInfoViewController ()
 {
@@ -33,7 +33,7 @@ NSMutableArray *marketcap;
     NSMutableArray *price4graphdata;
     NSMutableArray *time4graph;
     NSInteger *i ;
-    LCLineChartData *d;
+
     LOTAnimationView *animation;
 }
 
@@ -47,7 +47,7 @@ NSMutableArray *marketcap;
 }
 -(void)viewDidAppear:(BOOL)animated{
     self.webView.delegate = self;
-   
+   [self showloader];
     tickerapi = @"https://api.coinmarketcap.com/v1/ticker/";
     self.coinlabel.text = [NSString stringWithFormat:@"%@ (%@)",self.coinLabelStr,self.coinshrt];
     self.coinimage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[_coinshrt lowercaseString]]];
@@ -91,9 +91,10 @@ NSMutableArray *marketcap;
                    [time4graph addObject:[tempObject objectAtIndex:0]];
                 [price4graphdata addObject:[tempObject objectAtIndex:1]];
             }
+             [self createLineGraph];
             self.formatter = [[NSDateFormatter alloc] init];
             [self.formatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"yyyyMMMd" options:0 locale:[NSLocale currentLocale]]];
-      
+           
 }
     }
 }
@@ -216,6 +217,257 @@ NSMutableArray *marketcap;
     
 }
 }
+
+
+#pragma Mark CreateLineGraph
+- (void)createLineGraph{
+    MultiLineGraphView *graph = [[MultiLineGraphView alloc] initWithFrame:self.refView4Chart.frame];
+    [graph setDelegate:self];
+    [graph setDataSource:self];
+    [graph setLegendViewType:LegendTypeHorizontal];
+    [graph setShowCustomMarkerView:TRUE];
+    [graph drawGraph];
+    [self.view addSubview:graph];
+}
+
+#pragma mark MultiLineGraphViewDataSource
+- (NSInteger)numberOfLinesToBePlotted{
+    return 1;
+}
+
+- (LineDrawingType)typeOfLineToBeDrawnWithLineNumber:(NSInteger)lineNumber{
+    switch (lineNumber) {
+        case 0:
+            return LineDefault;
+            break;
+        case 1:
+            return LineDefault;
+            break;
+        case 2:
+            return LineDefault;
+            break;
+        case 3:
+            return LineParallelXAxis;
+            break;
+        case 4:
+            return LineParallelYAxis;
+            break;
+        default:
+            break;
+    }
+    return LineDefault;
+}
+
+- (UIColor *)colorForTheLineWithLineNumber:(NSInteger)lineNumber{
+    NSInteger aRedValue = arc4random()%255;
+    NSInteger aGreenValue = arc4random()%255;
+    NSInteger aBlueValue = arc4random()%255;
+    UIColor *randColor = [UIColor colorWithRed:aRedValue/255.0f green:aGreenValue/255.0f blue:aBlueValue/255.0f alpha:1.0f];
+    return randColor;
+}
+
+- (CGFloat)widthForTheLineWithLineNumber:(NSInteger)lineNumber{
+    return 1;
+}
+
+- (NSString *)nameForTheLineWithLineNumber:(NSInteger)lineNumber{
+    return [NSString stringWithFormat:@"Price of %@",self.coinlabel.text];
+}
+
+- (BOOL)shouldFillGraphWithLineNumber:(NSInteger)lineNumber{
+    switch (lineNumber) {
+        case 0:
+            return false;
+            break;
+        case 1:
+            return true;
+            break;
+        case 2:
+            return false;
+            break;
+        case 3:
+            return false;
+            break;
+        case 4:
+            return true;
+            break;
+        default:
+            break;
+    }
+    return false;
+}
+
+- (BOOL)shouldDrawPointsWithLineNumber:(NSInteger)lineNumber{
+    switch (lineNumber) {
+        case 0:
+            return true;
+            break;
+        case 1:
+            return false;
+            break;
+        case 2:
+            return false;
+            break;
+        case 3:
+            return false;
+            break;
+        case 4:
+            return false;
+            break;
+        default:
+            break;
+    }
+    return false;
+}
+
+- (NSMutableArray *)dataForYAxisWithLineNumber:(NSInteger)lineNumber {
+    switch (lineNumber) {
+        case 0:
+        {
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+//            for (NSMutableArray *tempObject in price4rmapi) {
+////                [time4graph addObject:[tempObject objectAtIndex:0]];
+//                [array addObject:[tempObject objectAtIndex:1]];
+//            }
+//            for (int i = 0; i < [price4graphdata count]; i++) {
+//                [array addObject:[NSNumber numberWithLong:random() % 100]];
+//            }
+            for (int index = 0; index <[price4graphdata count]; index++) {
+                array[index] = [NSString stringWithFormat:@"%@",[price4graphdata objectAtIndex: index]] ;
+            }
+            return array;
+        }
+            break;
+        case 1:
+        {
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            for (int i = 0; i < 10; i++) {
+                [array addObject:[NSNumber numberWithLong:random() % 100]];
+            }
+            return array;
+        }
+            break;
+        case 2:
+        {
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            for (int i = 0; i < 30; i++) {
+                [array addObject:[NSNumber numberWithLong:random() % 50]];
+            }
+            return array;
+        }
+            break;
+        case 3:
+        {
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            [array addObject:[NSNumber numberWithLong:random() % 100]];
+            [array addObject:[NSNumber numberWithLong:random() % 100]];
+            return array;
+        }
+            break;
+        case 4:
+        {
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            return array;
+        }
+            break;
+        default:
+            break;
+    }
+    return [[NSMutableArray alloc] init];
+}
+
+- (NSMutableArray *)dataForXAxisWithLineNumber:(NSInteger)lineNumber {
+    switch (lineNumber) {
+        case 0:
+        {
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+//            array = time4graph;
+//            for (NSMutableArray *tempObject in price4rmapi) {
+//
+//                [array addObject:[tempObject objectAtIndex:0]]];
+//            }
+            for (int index = 0; index <[price4graphdata count]; index++) {
+                array[index] = [NSString stringWithFormat:@"%@",[time4graph objectAtIndex: index]] ;
+            }
+            return array;
+        }
+            break;
+        case 1:
+        {
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            for (int i = 1; i <= 30; i++) {
+                [array addObject:[NSString stringWithFormat:@"%d Jun", i]];
+            }
+            return array;
+        }
+            break;
+        case 2:
+        {
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            for (int i = 1; i <= 30; i++) {
+                [array addObject:[NSString stringWithFormat:@"%d Jun", i]];
+            }
+            return array;
+        }
+            break;
+        case 3:
+        {
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            for (int i = 1; i <= 30; i+=10) {
+                [array addObject:[NSString stringWithFormat:@"%d Jun", i]];
+            }
+            return array;
+        }
+            break;
+        case 4:
+        {
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            [array addObject:@"6 Jun"];
+            [array addObject:@"28 Jun"];
+            return array;
+        }
+            break;
+        default:
+            break;
+    }
+    return [[NSMutableArray alloc] init];
+}
+
+- (UIView *)customViewForLineChartTouchWithXValue:(id)xValue andYValue:(id)yValue{
+    UIView *view = [[UIView alloc] init];
+    [view setBackgroundColor:[UIColor whiteColor]];
+    [view.layer setCornerRadius:4.0F];
+    [view.layer setBorderWidth:1.0F];
+    [view.layer setBorderColor:[[UIColor lightGrayColor] CGColor]];
+    [view.layer setShadowColor:[[UIColor blackColor] CGColor]];
+    [view.layer setShadowRadius:2.0F];
+    [view.layer setShadowOpacity:0.3F];
+    
+    CGFloat y = 0;
+    CGFloat width = 0;
+    for (int i = 0; i < 1 ; i++) {
+        UILabel *label = [[UILabel alloc] init];
+        [label setFont:[UIFont systemFontOfSize:12]];
+        [label setTextAlignment:NSTextAlignmentCenter];
+        [label setText:[NSString stringWithFormat:@"%@", yValue]];
+        [label setFrame:CGRectMake(0, y, 200, 30)];
+        [view addSubview:label];
+        
+        width = WIDTH(label);
+        y = BOTTOM(label);
+    }
+    
+    [view setFrame:CGRectMake(0, 0, width, y)];
+    return view;
+}
+
+#pragma mark MultiLineGraphViewDelegate
+- (void)didTapWithValuesAtX:(NSString *)xValue valuesAtY:(NSString *)yValue{
+    NSLog(@"%@", yValue);
+}
+
+
+
 - (NSString *) getDataFrom:(NSString *)url{
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
@@ -240,7 +492,7 @@ NSMutableArray *marketcap;
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
    
     [self.webView loadRequest:requestObj];
-    [self showloader];
+    
 
     NSString *str = [self getDataFrom:url2];
     str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];

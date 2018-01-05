@@ -73,6 +73,7 @@ NSMutableArray *shrt_form;
     
     return 1;
 }
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
    if ([segue.identifier isEqualToString:@"morecrypinfo"]) {
         MoreInfoViewController *controller = (MoreInfoViewController *)segue.destinationViewController;
