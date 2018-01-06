@@ -323,7 +323,7 @@ NSMutableArray *marketcap;
 - (BOOL)shouldDrawPointsWithLineNumber:(NSInteger)lineNumber{
     switch (lineNumber) {
         case 0:
-            return true;
+            return false;
             break;
         default:
             break;
@@ -366,8 +366,16 @@ NSMutableArray *marketcap;
 //
 //                [array addObject:[tempObject objectAtIndex:0]]];
 //            }
-            for (int index = 0; index <[price4graphdata count]; index++) {
-                array[index] = [NSString stringWithFormat:@"%@",[time4graph objectAtIndex: index]] ;
+            for (int index = 0; index <[time4graph count]; index++) {
+                NSString *time = [NSString stringWithFormat:@"%@",[time4graph objectAtIndex:index]];
+                double unixTimeStamp =[time doubleValue];
+                NSTimeInterval timeInterval=unixTimeStamp/1000;
+                NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+                NSDateFormatter *dateformatter=[[NSDateFormatter alloc]init];
+                [dateformatter setLocale:[NSLocale currentLocale]];
+                [dateformatter setDateFormat:@"dd-MM-yyyy"];
+                NSString *dateString=[dateformatter stringFromDate:date];
+                array[index] = [NSString stringWithFormat:@"%@",dateString] ;
             }
             return array;
         }
