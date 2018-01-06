@@ -122,14 +122,14 @@ NSMutableArray *marketcap;
         }
         else
         {
-            self.btn1.hidden = NO;
-            self.btn2.hidden = NO;
-            self.btn3.hidden = NO;
-            self.btn4.hidden = NO;
-            self.btn5.hidden = NO;
-            self.btn6.hidden = NO;
-            self.btn7.hidden = NO;
-            self.refView4Chart.hidden = NO;
+//            self.btn1.hidden = NO;
+//            self.btn2.hidden = NO;
+//            self.btn3.hidden = NO;
+//            self.btn4.hidden = NO;
+//            self.btn5.hidden = NO;
+//            self.btn6.hidden = NO;
+//            self.btn7.hidden = NO;
+          //  self.refView4Chart.hidden = NO;
             price4graphdata = [[NSMutableArray alloc] init];
                   time4graph = [[NSMutableArray alloc] init];
             self.intt = 0;
@@ -216,7 +216,7 @@ NSMutableArray *marketcap;
             per7d = [jsonArray valueForKey: @"percent_change_7d"];
             symbol = [jsonArray valueForKey: @"symbol"];
            
-             [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"1day"];
+             [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"30day"];
 
             self.pricelabel.text = [NSString stringWithFormat:@"$%@",price[0]];
             self.marketcaplabel.text = [NSString stringWithFormat:@"$%@",marketcap[0]];
