@@ -273,10 +273,10 @@ NSMutableArray *marketcap;
 - (void)createLineGraph{
    [graph setDataSource:NULL];
     [graph setDelegate:self];
+    [graph setHidden:NO];
     [graph setDataSource:self];
     [graph setLegendViewType:LegendTypeHorizontal];
     [graph setShowCustomMarkerView:TRUE];
- 
     [graph drawGraph];
     [self.view addSubview:graph];
 }
@@ -312,7 +312,7 @@ NSMutableArray *marketcap;
 - (BOOL)shouldFillGraphWithLineNumber:(NSInteger)lineNumber{
     switch (lineNumber) {
         case 0:
-            return false;
+            return true;
             break;
         default:
             break;
@@ -470,7 +470,7 @@ NSMutableArray *marketcap;
         [graph removeFromSuperview];
     }
      [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"1day"];
-        [graph reloadGraph];
+       // [graph reloadGraph];
 }
 
 - (IBAction)day7btn:(id)sender {
@@ -479,16 +479,16 @@ NSMutableArray *marketcap;
         [graph removeFromSuperview];
     }
      [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"7day"];
-        [graph reloadGraph];
+     //   [graph reloadGraph];
 }
 
 - (IBAction)month1btn:(id)sender {
     BOOL doesContain = [self.view.subviews containsObject:graph];
-    if(doesContain){
+    if(doesContain  == YES){
         [graph removeFromSuperview];
     }
     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"30day"];
-     [graph reloadGraph];
+   //  [graph reloadGraph];
     }
 
 
@@ -496,9 +496,11 @@ NSMutableArray *marketcap;
     BOOL doesContain = [self.view.subviews containsObject:graph];
     if(doesContain){
         [graph removeFromSuperview];
+        [graph setHidden:YES];
+        [self.view sendSubviewToBack:graph];
     }
      [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"90day"];
-        [graph reloadGraph];
+      //  [graph reloadGraph];
 }
 
 - (IBAction)month6btn:(id)sender {
@@ -507,7 +509,7 @@ NSMutableArray *marketcap;
         [graph removeFromSuperview];
     }
      [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"180day"];
-         [graph reloadGraph];
+       //  [graph reloadGraph];
 }
 
 - (IBAction)year1btn:(id)sender {
@@ -516,7 +518,7 @@ NSMutableArray *marketcap;
         [graph removeFromSuperview];
     }
      [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"360day"];
-        [graph reloadGraph];
+      //  [graph reloadGraph];
 }
 - (IBAction)alldatabtn:(id)sender {
 }
