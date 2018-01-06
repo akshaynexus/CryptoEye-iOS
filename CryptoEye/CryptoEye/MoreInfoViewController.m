@@ -58,7 +58,7 @@ NSMutableArray *marketcap;
     self.idlabel.text = self.idstr;
     //setting data from the recived vals from tableview
       [self getid4api];
-   graph = [[MultiLineGraphView alloc] initWithFrame:self.refView4Chart.frame];
+    graph = [[MultiLineGraphView alloc] initWithFrame:self.refView4Chart.frame];
     // Do any additional setup after loading the view.
     
 }
@@ -216,7 +216,7 @@ NSMutableArray *marketcap;
             per7d = [jsonArray valueForKey: @"percent_change_7d"];
             symbol = [jsonArray valueForKey: @"symbol"];
            
-             [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"30day"];
+             [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"90day"];
 
             self.pricelabel.text = [NSString stringWithFormat:@"$%@",price[0]];
             self.marketcaplabel.text = [NSString stringWithFormat:@"$%@",marketcap[0]];

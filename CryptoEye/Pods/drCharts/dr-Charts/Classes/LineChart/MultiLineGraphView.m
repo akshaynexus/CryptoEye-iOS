@@ -194,7 +194,7 @@
         }
     }
     
-    int gridYCount = 5;
+    int gridYCount = 2;
     
     if (scaleHeight > height) {
         gridYCount = ceil(gridYCount * lastScale);

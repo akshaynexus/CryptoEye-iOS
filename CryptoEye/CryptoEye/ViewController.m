@@ -159,6 +159,7 @@ cell.coinicon.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[
 }
 -(void)stoploader{
     animation.loopAnimation = false;
+        [coverView removeFromSuperview];
 }
 -(void)showloader{
     // get your window screen size
@@ -171,7 +172,7 @@ cell.coinicon.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[
     animation.loopAnimation = TRUE;
     [animation playWithCompletion:^(BOOL animationFinished) {
         [UIView animateWithDuration:1.0f animations:^{
-             [coverView removeFromSuperview];
+         
         }];
        
         [self getdatatable];
