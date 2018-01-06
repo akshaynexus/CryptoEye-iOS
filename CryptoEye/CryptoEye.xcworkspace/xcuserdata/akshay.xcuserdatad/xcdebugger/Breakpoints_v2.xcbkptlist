@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CryptoEye/MoreInfoViewController.m"
-            timestampString = "536938605.164295"
+            timestampString = "536954677.5951689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "487"
-            endingLineNumber = "487"
+            startingLineNumber = "486"
+            endingLineNumber = "486"
             landmarkName = "-month1btn:"
             landmarkType = "7">
          </BreakpointContent>
