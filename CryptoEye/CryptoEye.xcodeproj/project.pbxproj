@@ -154,6 +154,7 @@
 		BA70E30D1FDDBA9400A2DBFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA70E30B1FDDBA9400A2DBFE /* LaunchScreen.storyboard */; };
 		BA70E3101FDDBA9400A2DBFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA70E30F1FDDBA9400A2DBFE /* main.m */; };
 		BA70E3181FDDBD4C00A2DBFE /* CryptoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA70E3171FDDBD4C00A2DBFE /* CryptoTableViewCell.m */; };
+		BABDC92320010C6100F246AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BABDC92220010C6100F246AB /* GoogleService-Info.plist */; };
 		FC859A1270AF499A1F6E89D1 /* Pods_CryptoEye.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA772920A4DA939C33B5EA8 /* Pods_CryptoEye.framework */; };
 /* End PBXBuildFile section */
 
@@ -316,6 +317,8 @@
 		BA70E30F1FDDBA9400A2DBFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BA70E3161FDDBD4C00A2DBFE /* CryptoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CryptoTableViewCell.h; sourceTree = "<group>"; };
 		BA70E3171FDDBD4C00A2DBFE /* CryptoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CryptoTableViewCell.m; sourceTree = "<group>"; };
+		BABDC92220010C6100F246AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BABDC92420010D9C00F246AB /* CryptoEye.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CryptoEye.entitlements; sourceTree = "<group>"; };
 		BBA772920A4DA939C33B5EA8 /* Pods_CryptoEye.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoEye.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -363,6 +366,8 @@
 		BA70E2FF1FDDBA9400A2DBFE /* CryptoEye */ = {
 			isa = PBXGroup;
 			children = (
+				BABDC92420010D9C00F246AB /* CryptoEye.entitlements */,
+				BABDC92220010C6100F246AB /* GoogleService-Info.plist */,
 				BA313BA71FE2AD3F0045785F /* infinite_rainbow.json */,
 				BA313BAB1FE2ADF60045785F /* ripple_loading_animation.json */,
 				BA313BAD1FE2AF2B0045785F /* pulse_loader.json */,
@@ -573,6 +578,14 @@
 					BA70E2FC1FDDBA9400A2DBFE = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -696,6 +709,7 @@
 				BA313BA81FE2AD400045785F /* infinite_rainbow.json in Resources */,
 				BA0421E61FDEFB740083C6A9 /* game.png in Resources */,
 				BA0422131FDEFB740083C6A9 /* rhoc.png in Resources */,
+				BABDC92320010C6100F246AB /* GoogleService-Info.plist in Resources */,
 				BA0421E51FDEFB740083C6A9 /* fun.png in Resources */,
 				BA0421F61FDEFB740083C6A9 /* maid.png in Resources */,
 				BA0422241FDEFB740083C6A9 /* ubq.png in Resources */,
@@ -936,6 +950,7 @@
 			baseConfigurationReference = 388484147F54C567A0D6DDB6 /* Pods-CryptoEye.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CryptoEye/CryptoEye.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZMJ5ZS2SKE;
 				INFOPLIST_FILE = CryptoEye/Info.plist;
@@ -951,6 +966,7 @@
 			baseConfigurationReference = 4580149F785BE414F6442F25 /* Pods-CryptoEye.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CryptoEye/CryptoEye.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZMJ5ZS2SKE;
 				INFOPLIST_FILE = CryptoEye/Info.plist;
