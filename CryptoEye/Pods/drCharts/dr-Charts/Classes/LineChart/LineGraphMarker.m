@@ -40,7 +40,7 @@
                         range:NSMakeRange(0, string.length)];
     
     [self.markerLabel setAttributedText:attrString];
-    [self.markerLabel setTextColor:self.textColor];
+    [self.markerLabel setTextColor:[UIColor whiteColor]];
     
     CGFloat height = MAXFLOAT;
     CGFloat width = MAXFLOAT;

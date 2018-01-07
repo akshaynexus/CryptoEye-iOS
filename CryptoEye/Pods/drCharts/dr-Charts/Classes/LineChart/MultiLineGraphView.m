@@ -464,7 +464,7 @@
     [self.marker setHidden:YES];
     [self.marker setFrame:CGRectZero];
     [self.marker setBgColor:self.markerColor];
-    [self.marker setTextColor:self.markerTextColor];
+    [self.marker setTextColor:[UIColor whiteColor]];
     [self.marker setTextFont:self.textFont];
     [self.graphScrollView addSubview:self.marker];
     
@@ -487,7 +487,7 @@
     self.legendView = [[LegendView alloc] initWithFrame:CGRectMake(SIDE_PADDING, BOTTOM(self.graphView), WIDTH(self) - 2*SIDE_PADDING, 0)];
     [self.legendView setLegendArray:self.legendArray];
     [self.legendView setFont:self.textFont];
-    [self.legendView setTextColor:self.textColor];
+    [self.legendView setTextColor:[UIColor whiteColor]];
     [self.legendView setLegendViewType:self.legendViewType];
     [self.legendView createLegend];
     [self addSubview:self.legendView];
@@ -733,7 +733,7 @@
     [textLayer setFrame:frame];
     [textLayer setString:text];
     [textLayer setAlignmentMode:kCAAlignmentCenter];
-    [textLayer setForegroundColor:self.textColor.CGColor];
+    [textLayer setForegroundColor:[UIColor whiteColor].CGColor];
     [textLayer setShouldRasterize:YES];
     [textLayer setRasterizationScale:[[UIScreen mainScreen] scale]];
     [textLayer setContentsScale:[[UIScreen mainScreen] scale]];

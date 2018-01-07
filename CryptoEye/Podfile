@@ -13,4 +13,5 @@ pod 'drCharts', :git => 'https://github.com/Zomato/DR-charts.git'
 pod 'MaterialComponents'
 pod 'Firebase/Messaging'
 pod 'SCLAlertView-Objective-C', '~> 1.1'
+pod 'Firebase/AdMob'
 end

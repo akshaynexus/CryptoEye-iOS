@@ -8,6 +8,7 @@
 
 #import "MoreInfoViewController.h"
 @import Lottie;
+@import GoogleMobileAds;
 @import drCharts;
 @import MaterialComponents;
 #define SECS_PER_DAY (86400)
@@ -46,11 +47,23 @@ NSMutableArray *marketcap;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
+  
     
+ 
+
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    if (self.isMovingFromParentViewController) {
+        NSLog(@"Going back now");
+    }
 }
 -(void)viewDidAppear:(BOOL)animated{
-
+    self.bannerView.rootViewController = self;
+    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+   [self.bannerView loadRequest:[GADRequest request]];
     self.webView.delegate = self;
+ 
    [self showloader];
     tickerapi = @"https://api.coinmarketcap.com/v1/ticker/";
     self.coinlabel.text = [NSString stringWithFormat:@"%@ (%@)",self.coinLabelStr,self.coinshrt];
@@ -141,10 +154,10 @@ NSMutableArray *marketcap;
                    [time4graph addObject:[tempObject objectAtIndex:0]];
                 [price4graphdata addObject:[tempObject objectAtIndex:1]];
             }
-                        [self performSelectorInBackground:@selector(createLineGraph) withObject:NULL];
+            
             self.formatter = [[NSDateFormatter alloc] init];
             [self.formatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"yyyyMMMd" options:0 locale:[NSLocale currentLocale]]];
-           
+            [self createLineGraph];
 }
     }
 }
@@ -216,8 +229,8 @@ NSMutableArray *marketcap;
             per7d = [jsonArray valueForKey: @"percent_change_7d"];
             symbol = [jsonArray valueForKey: @"symbol"];
            
-             [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"90day"];
-
+            [self getgraphdata:@"90day"];
+           
             self.pricelabel.text = [NSString stringWithFormat:@"$%@",price[0]];
             self.marketcaplabel.text = [NSString stringWithFormat:@"$%@",marketcap[0]];
             self.cirsupplylabel.text = [NSString stringWithFormat:@"%@",cirsupply[0]];
@@ -374,7 +387,7 @@ NSMutableArray *marketcap;
                 NSDateFormatter *dateformatter=[[NSDateFormatter alloc]init];
                 [dateformatter setLocale:[NSLocale currentLocale]];
                 [dateformatter setDateFormat:@"dd-MM-yyyy"];
-                NSString *dateString=[dateformatter stringFromDate:date];
+                NSString *dateString=[self.formatter stringFromDate:date];
                 array[index] = [NSString stringWithFormat:@"%@",dateString] ;
             }
             return array;
@@ -403,8 +416,8 @@ NSMutableArray *marketcap;
         UILabel *label = [[UILabel alloc] init];
         [label setFont:[UIFont systemFontOfSize:12]];
         [label setTextAlignment:NSTextAlignmentCenter];
-        [label setText:[NSString stringWithFormat:@"%@", yValue]];
-        [label setFrame:CGRectMake(0, y, 200, 30)];
+        [label setText:[NSString stringWithFormat:@"Price:$%@ Date:%@", yValue,xValue]];
+        [label setFrame:CGRectMake(0, y, 200, 40)];
         [view addSubview:label];
         
         width = WIDTH(label);

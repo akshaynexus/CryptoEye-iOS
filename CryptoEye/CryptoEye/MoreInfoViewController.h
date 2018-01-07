@@ -6,6 +6,7 @@
 //  Copyright © 2017 Akshay. All rights reserved.
 //
 @import drCharts;
+@import GoogleMobileAds;
 #import "ViewController.h"
 @interface MoreInfoViewController : ViewController<UIWebViewDelegate,MultiLineGraphViewDelegate,MultiLineGraphViewDataSource>
 @property (strong, nonatomic) IBOutlet UIImageView *coinimage;
@@ -40,6 +41,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *btn5;
 @property (strong, nonatomic) IBOutlet UIButton *btn6;
 @property (strong, nonatomic) IBOutlet UIButton *btn7;
+@property (strong, nonatomic) IBOutlet GADBannerView *bannerView;
+@property(nonatomic, strong) GADInterstitial*interstitial;
+
 
 
 @end

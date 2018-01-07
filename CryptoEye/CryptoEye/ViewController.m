@@ -12,6 +12,7 @@
 #import "MoreInfoViewController.h"
 #import "AnimLoaderViewController.h"
 @import Lottie;
+#import <tgmath.h>
 
 @interface ViewController (){
     NSArray *jsonArray;
@@ -25,6 +26,7 @@ NSMutableArray *shrt_form;
     NSString *idpush;
     UIView* coverView;
     NSInteger *i ;
+   int ii;
     LOTAnimationView *animation;
 }
 
@@ -35,14 +37,16 @@ NSMutableArray *shrt_form;
 - (void)viewDidLoad {
     [super viewDidLoad];
     i  = 0;
-
+    ii=0;
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-   
-    
-    
+    self.interstitial =[self createAndLoadInterstitial];
+
+
+    GADRequest *request = [GADRequest request];
+    [self.interstitial loadRequest:request];
     if(i==0){
         [NSTimer scheduledTimerWithTimeInterval:2
                                          target:self
@@ -150,8 +154,28 @@ cell.coinicon.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[
     
     return cell;
 }
+- (GADInterstitial *)createAndLoadInterstitial {
+    GADInterstitial *interstitial =
+    [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-3940256099942544/4411468910"];
+    interstitial.delegate = self;
+    [interstitial loadRequest:[GADRequest request]];
+    return interstitial;
+}
+
+- (void)interstitialDidDismissScreen:(GADInterstitial *)interstitial {
+    self.interstitial = [self createAndLoadInterstitial];
+}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    iconfm =  shrt_form[indexPath.row];
+    ++ii;
+    if (ii%5 == 0){
+        if (self.interstitial.isReady) {
+            [self.interstitial presentFromRootViewController:self];
+        } else {
+            NSLog(@"Ad wasn't ready");
+        }
+
+    }
+iconfm =  shrt_form[indexPath.row];
     coinnamepush =  name[indexPath.row];
     idpush = rank[indexPath.row];
     [self performSegueWithIdentifier:@"morecrypinfo" sender:self];
