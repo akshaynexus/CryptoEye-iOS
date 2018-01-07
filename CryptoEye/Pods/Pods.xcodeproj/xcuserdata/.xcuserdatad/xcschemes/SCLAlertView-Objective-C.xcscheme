@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A7E6EFD38350916FAC623F3C9E37D8B9'
-               BlueprintName = 'Pods-CryptoEye'
+               BlueprintIdentifier = '59822F5FF7BD435534A697B432B6C504'
+               BlueprintName = 'SCLAlertView-Objective-C'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods-CryptoEye.framework'>
+               BuildableName = 'SCLAlertView-Objective-C.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

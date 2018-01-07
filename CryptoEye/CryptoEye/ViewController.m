@@ -5,13 +5,13 @@
 //  Created by Akshay on 11/12/17.
 //  Copyright © 2017 Akshay. All rights reserved.
 //
-
+#import "Reachability.h"
 #import "ViewController.h"
+@import SCLAlertView_Objective_C;
 #import "CryptoTableViewCell.h"
 #import "MoreInfoViewController.h"
 #import "AnimLoaderViewController.h"
 @import Lottie;
-
 
 @interface ViewController (){
     NSArray *jsonArray;
@@ -170,19 +170,33 @@ cell.coinicon.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[
     animation.contentMode = UIViewContentModeScaleAspectFit;
     animation.center = self.view.center;
     animation.loopAnimation = TRUE;
-    [animation playWithCompletion:^(BOOL animationFinished) {
-        [UIView animateWithDuration:1.0f animations:^{
-         
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        //no internet connection
+        SCLAlertView *alert = [[SCLAlertView alloc] init];
+        NSLog(@"There IS NO internet connection");
+        [alert showError:self title:@"No Internet Connection" subTitle:@"Check your internet connection and try again." closeButtonTitle:@"OK" duration:0.0f]; // Error
+    } else {
+         [coverView addSubview:animation];
+        // change the background color to black and the opacity to 0.6
+        coverView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
+        // add this new view to your main view
+        [self.view addSubview:coverView];
+        //We have internet conn
+        [animation playWithCompletion:^(BOOL animationFinished) {
+            [UIView animateWithDuration:1.0f animations:^{
+                  [self.tableCvi reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+            }];
+            
+            
         }];
-       
         [self getdatatable];
-          [self.tableCvi reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-    }];
-    [coverView addSubview:animation];
-    // change the background color to black and the opacity to 0.6
-    coverView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
-    // add this new view to your main view
-    [self.view addSubview:coverView];
+      
+    }
+  
+   
+ 
 }
 
 - (void)didReceiveMemoryWarning {

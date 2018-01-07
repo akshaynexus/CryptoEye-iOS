@@ -138,6 +138,8 @@
 		BA0422351FDEFB740083C6A9 /* zec.png in Resources */ = {isa = PBXBuildFile; fileRef = BA3233B31FDEA2D5005D2166 /* zec.png */; };
 		BA0422361FDEFB740083C6A9 /* zen.png in Resources */ = {isa = PBXBuildFile; fileRef = BA32338A1FDEA2D1005D2166 /* zen.png */; };
 		BA12059F1FE1029500361612 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BA12059C1FE1027300361612 /* libsqlite3.tbd */; };
+		BA1FC32A200204DF00D3694C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA1FC329200204DF00D3694C /* SystemConfiguration.framework */; };
+		BA1FC32D2002057600D3694C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1FC32C2002057600D3694C /* Reachability.m */; };
 		BA23FD731FDFFFA4000273D9 /* MoreInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA23FD721FDFFFA3000273D9 /* MoreInfoViewController.m */; };
 		BA313B9E1FE29AF90045785F /* preloader.json in Resources */ = {isa = PBXBuildFile; fileRef = BA313B9D1FE29AF80045785F /* preloader.json */; };
 		BA313BA41FE29FD00045785F /* AnimLoaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA313BA31FE29FD00045785F /* AnimLoaderViewController.m */; };
@@ -165,6 +167,9 @@
 		BA0422371FDF00660083C6A9 /* btc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btc.png; path = "../../../../../Downloads/cryptocurrency-icons-master/128/icon/btc.png"; sourceTree = "<group>"; };
 		BA12059B1FE1027300361612 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		BA12059C1FE1027300361612 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		BA1FC329200204DF00D3694C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BA1FC32B2002057600D3694C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		BA1FC32C2002057600D3694C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		BA23FD711FDFFFA3000273D9 /* MoreInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreInfoViewController.h; sourceTree = "<group>"; };
 		BA23FD721FDFFFA3000273D9 /* MoreInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreInfoViewController.m; sourceTree = "<group>"; };
 		BA313B9D1FE29AF80045785F /* preloader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = preloader.json; sourceTree = "<group>"; };
@@ -329,6 +334,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA1FC32A200204DF00D3694C /* SystemConfiguration.framework in Frameworks */,
 				BA6AC6A31FFFF80A00D8528E /* MobileCoreServices.framework in Frameworks */,
 				BA12059F1FE1029500361612 /* libsqlite3.tbd in Frameworks */,
 				FC859A1270AF499A1F6E89D1 /* Pods_CryptoEye.framework in Frameworks */,
@@ -368,6 +374,8 @@
 		BA70E2FF1FDDBA9400A2DBFE /* CryptoEye */ = {
 			isa = PBXGroup;
 			children = (
+				BA1FC32B2002057600D3694C /* Reachability.h */,
+				BA1FC32C2002057600D3694C /* Reachability.m */,
 				BABDC92420010D9C00F246AB /* CryptoEye.entitlements */,
 				BABDC92220010C6100F246AB /* GoogleService-Info.plist */,
 				BABDC92720012F5400F246AB /* loader_spinner.json */,
@@ -538,6 +546,7 @@
 		C3517E353AC9262F262F518C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA1FC329200204DF00D3694C /* SystemConfiguration.framework */,
 				BA6AC6A21FFFF80900D8528E /* MobileCoreServices.framework */,
 				BA12059B1FE1027300361612 /* libsqlite3.0.tbd */,
 				BA12059C1FE1027300361612 /* libsqlite3.tbd */,
@@ -817,6 +826,7 @@
 				BA313BA41FE29FD00045785F /* AnimLoaderViewController.m in Sources */,
 				BA23FD731FDFFFA4000273D9 /* MoreInfoViewController.m in Sources */,
 				BA70E3181FDDBD4C00A2DBFE /* CryptoTableViewCell.m in Sources */,
+				BA1FC32D2002057600D3694C /* Reachability.m in Sources */,
 				BA70E3051FDDBA9400A2DBFE /* ViewController.m in Sources */,
 				BA70E3101FDDBA9400A2DBFE /* main.m in Sources */,
 				BA70E3021FDDBA9400A2DBFE /* AppDelegate.m in Sources */,
