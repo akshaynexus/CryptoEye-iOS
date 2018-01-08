@@ -92,6 +92,9 @@ NSMutableArray *shrt_form;
        controller.idstr = idpush;
        
    }
+   else if ([segue.identifier isEqualToString:@"showinfo"]){
+       //add data to segue before showing about
+   }
     
 }
 -(UIColor*)colorWithHexString:(NSString*)hex
@@ -132,7 +135,7 @@ NSMutableArray *shrt_form;
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     ///NSLog(@"%lu", (unsigned long)jsonArray.count);
-    return jsonArray.count;
+    return [jsonArray count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     [coverView removeFromSuperview];
@@ -188,14 +191,14 @@ iconfm =  shrt_form[indexPath.row];
 }
 -(void)stoploader{
     animation.loopAnimation = false;
-        [coverView removeFromSuperview];
+//        [coverView removeFromSuperview];
 }
 -(void)showloader{
     // get your window screen size
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     //create a new view with the same size
     coverView = [[UIView alloc] initWithFrame:screenRect];
-    animation = [LOTAnimationView animationNamed:@"pulse_loader"];
+    animation = [LOTAnimationView animationNamed:@"loader_ring"];
     animation.contentMode = UIViewContentModeScaleAspectFit;
     animation.center = self.view.center;
     animation.loopAnimation = TRUE;
@@ -209,7 +212,7 @@ iconfm =  shrt_form[indexPath.row];
     } else {
          [coverView addSubview:animation];
         // change the background color to black and the opacity to 0.6
-        coverView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
+        coverView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
         // add this new view to your main view
         [self.view addSubview:coverView];
         //We have internet conn
@@ -233,7 +236,7 @@ iconfm =  shrt_form[indexPath.row];
     // Dispose of any resources that can be recreated.
 }
 -(void)getdatatable{
-    NSString *url = @"https://api.coinmarketcap.com/v1/ticker/?limit=1000";
+    NSString *url = @"https://api.coinmarketcap.com/v1/ticker/?limit=900";
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
     [request setURL:[NSURL URLWithString:url]];
@@ -286,6 +289,10 @@ iconfm =  shrt_form[indexPath.row];
 }
 }
 
+
+- (IBAction)showInfo:(id)sender {
+      [self performSegueWithIdentifier:@"showinfo" sender:self];
+}
 
 - (IBAction)refDataBtn:(id)sender {
     [self.tableCvi reloadData];

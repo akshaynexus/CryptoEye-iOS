@@ -156,6 +156,8 @@
 		BA70E30D1FDDBA9400A2DBFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA70E30B1FDDBA9400A2DBFE /* LaunchScreen.storyboard */; };
 		BA70E3101FDDBA9400A2DBFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA70E30F1FDDBA9400A2DBFE /* main.m */; };
 		BA70E3181FDDBD4C00A2DBFE /* CryptoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA70E3171FDDBD4C00A2DBFE /* CryptoTableViewCell.m */; };
+		BA85445320037DED000760E0 /* loader_ring.json in Resources */ = {isa = PBXBuildFile; fileRef = BA85445220037DEC000760E0 /* loader_ring.json */; };
+		BA85445620039DB9000760E0 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA85445520039DB9000760E0 /* AboutViewController.m */; };
 		BABDC92320010C6100F246AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BABDC92220010C6100F246AB /* GoogleService-Info.plist */; };
 		BABDC92820012F5500F246AB /* loader_spinner.json in Resources */ = {isa = PBXBuildFile; fileRef = BABDC92720012F5400F246AB /* loader_spinner.json */; };
 		FC859A1270AF499A1F6E89D1 /* Pods_CryptoEye.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA772920A4DA939C33B5EA8 /* Pods_CryptoEye.framework */; };
@@ -323,6 +325,9 @@
 		BA70E30F1FDDBA9400A2DBFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BA70E3161FDDBD4C00A2DBFE /* CryptoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CryptoTableViewCell.h; sourceTree = "<group>"; };
 		BA70E3171FDDBD4C00A2DBFE /* CryptoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CryptoTableViewCell.m; sourceTree = "<group>"; };
+		BA85445220037DEC000760E0 /* loader_ring.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader_ring.json; sourceTree = "<group>"; };
+		BA85445420039DB9000760E0 /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		BA85445520039DB9000760E0 /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		BABDC92220010C6100F246AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BABDC92420010D9C00F246AB /* CryptoEye.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CryptoEye.entitlements; sourceTree = "<group>"; };
 		BABDC92720012F5400F246AB /* loader_spinner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader_spinner.json; sourceTree = "<group>"; };
@@ -379,6 +384,7 @@
 				BABDC92420010D9C00F246AB /* CryptoEye.entitlements */,
 				BABDC92220010C6100F246AB /* GoogleService-Info.plist */,
 				BABDC92720012F5400F246AB /* loader_spinner.json */,
+				BA85445220037DEC000760E0 /* loader_ring.json */,
 				BA313BA71FE2AD3F0045785F /* infinite_rainbow.json */,
 				BA313BAB1FE2ADF60045785F /* ripple_loading_animation.json */,
 				BA313BAD1FE2AF2B0045785F /* pulse_loader.json */,
@@ -401,6 +407,8 @@
 				BA70E3171FDDBD4C00A2DBFE /* CryptoTableViewCell.m */,
 				BA23FD711FDFFFA3000273D9 /* MoreInfoViewController.h */,
 				BA23FD721FDFFFA3000273D9 /* MoreInfoViewController.m */,
+				BA85445420039DB9000760E0 /* AboutViewController.h */,
+				BA85445520039DB9000760E0 /* AboutViewController.m */,
 			);
 			path = CryptoEye;
 			sourceTree = "<group>";
@@ -632,6 +640,7 @@
 				BA04220D1FDEFB740083C6A9 /* pura.png in Resources */,
 				BA0421EE1FDEFB740083C6A9 /* icn.png in Resources */,
 				BA0422271FDEFB740083C6A9 /* veri.png in Resources */,
+				BA85445320037DED000760E0 /* loader_ring.json in Resources */,
 				BA0421CF1FDEFB740083C6A9 /* cvc.png in Resources */,
 				BA0421C61FDEFB740083C6A9 /* bnt.png in Resources */,
 				BA0421E81FDEFB740083C6A9 /* gno.png in Resources */,
@@ -825,6 +834,7 @@
 			files = (
 				BA313BA41FE29FD00045785F /* AnimLoaderViewController.m in Sources */,
 				BA23FD731FDFFFA4000273D9 /* MoreInfoViewController.m in Sources */,
+				BA85445620039DB9000760E0 /* AboutViewController.m in Sources */,
 				BA70E3181FDDBD4C00A2DBFE /* CryptoTableViewCell.m in Sources */,
 				BA1FC32D2002057600D3694C /* Reachability.m in Sources */,
 				BA70E3051FDDBA9400A2DBFE /* ViewController.m in Sources */,

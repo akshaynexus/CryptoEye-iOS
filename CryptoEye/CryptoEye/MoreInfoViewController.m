@@ -59,23 +59,29 @@ NSMutableArray *marketcap;
     }
 }
 -(void)viewDidAppear:(BOOL)animated{
+    //Setting admob stuff
     self.bannerView.rootViewController = self;
     self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
    [self.bannerView loadRequest:[GADRequest request]];
     self.webView.delegate = self;
- 
+ //showing preloader
    [self showloader];
+    //seting the data api
     tickerapi = @"https://api.coinmarketcap.com/v1/ticker/";
+    //setting data recived from tableview
     self.coinlabel.text = [NSString stringWithFormat:@"%@ (%@)",self.coinLabelStr,self.coinshrt];
     self.coinimage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[_coinshrt lowercaseString]]];
     self.idlabel.text = self.idstr;
     //setting data from the recived vals from tableview
       [self getid4api];
+    //init graph
     graph = [[MultiLineGraphView alloc] initWithFrame:self.refView4Chart.frame];
     // Do any additional setup after loading the view.
     
 }
 -(void)getgraphdata:(NSString*)his_dur{
+    //pretty self explanatory
+    
     if([his_dur isEqualToString:@"1day"]){
        graphapi = [NSString stringWithFormat:@"http://www.coincap.io/history/1day/%@",self.coinshrt];
     }
@@ -111,10 +117,12 @@ NSMutableArray *marketcap;
         
     }
     else{
+        //parsing json data
         NSString *data = [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
         NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
         id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
         if (error) {
+            //handle if no graph is available for the particular coin
             UILabel *label = [[UILabel alloc]initWithFrame:self.refView4Chart.frame];
             label.textColor = [UIColor whiteColor];
             label.text = [NSString stringWithFormat:@"No graph data for %@",self.coinlabel.text];
@@ -143,6 +151,8 @@ NSMutableArray *marketcap;
 //            self.btn6.hidden = NO;
 //            self.btn7.hidden = NO;
           //  self.refView4Chart.hidden = NO;
+            
+            //setting graph data
             price4graphdata = [[NSMutableArray alloc] init];
                   time4graph = [[NSMutableArray alloc] init];
             self.intt = 0;
@@ -162,11 +172,9 @@ NSMutableArray *marketcap;
     }
 }
 
--(void)showgraph{
-    
 
-}
 -(void)stoploader{
+    //pretty self explanatory
     animation.loopAnimation = false;
 }
 -(void)showloader{
@@ -192,6 +200,7 @@ NSMutableArray *marketcap;
     [self.view addSubview:coverView];
 }
 -(void)getcoins {
+    //gts the data that is displayed other than graph data
     NSString *url = tickerapi;
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
@@ -230,38 +239,47 @@ NSMutableArray *marketcap;
             symbol = [jsonArray valueForKey: @"symbol"];
            
             [self getgraphdata:@"90day"];
-           
-            self.pricelabel.text = [NSString stringWithFormat:@"$%@",price[0]];
-            self.marketcaplabel.text = [NSString stringWithFormat:@"$%@",marketcap[0]];
-            self.cirsupplylabel.text = [NSString stringWithFormat:@"%@",cirsupply[0]];
-            self.twentyfourvolabel.text = [NSString stringWithFormat:@"$%@",onedayvol[0]];
+            NSNumberFormatter * formatter = [NSNumberFormatter new];
+            [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+            [formatter setMaximumFractionDigits:1]; // Set this if you need 1 digits
+         
+            NSString *tempstr =  [formatter stringFromNumber:[NSNumber numberWithFloat:[price[0] floatValue]]];
+            self.pricelabel.text = [NSString localizedStringWithFormat:@"$%@",price[0]];
+            tempstr =[formatter stringFromNumber:[NSNumber numberWithFloat:[marketcap[0] floatValue]]];
+            self.marketcaplabel.text = [NSString localizedStringWithFormat:@"$%@",tempstr];
+                  tempstr =[formatter stringFromNumber:[NSNumber numberWithFloat:[cirsupply[0] floatValue]]];
+            self.cirsupplylabel.text = [NSString localizedStringWithFormat:@"%@ %@",tempstr,self.coinshrt];
+                  tempstr =[formatter stringFromNumber:[NSNumber numberWithFloat:[onedayvol[0] floatValue]]];
+            self.twentyfourvolabel.text = [NSString localizedStringWithFormat:@"$%@",tempstr];
+            //setting colors and all to signify fluctuation percentages
+            
             if ([per24hr[0] rangeOfString:@"-"].location == NSNotFound) {
                 //doesnt contain
                 self.twentyfourhrperlabel.textColor = [UIColor greenColor];
-                self.twentyfourhrperlabel.text = per24hr [0];
+                self.twentyfourhrperlabel.text = [NSString stringWithFormat:@"+%@",per24hr [0]];
             } else {
                 self.twentyfourhrperlabel.textColor = [UIColor redColor];
-                self.twentyfourhrperlabel.text = per24hr[0];
+                self.twentyfourhrperlabel.text = [NSString stringWithFormat:@"%@",per24hr [0]];
                 //does contain
                 
             }
             if ([per7d[0] rangeOfString:@"-"].location == NSNotFound) {
                 //doesnt contain
                 self.sevendayperlabel.textColor = [UIColor greenColor];
-                self.sevendayperlabel.text = per7d[0];
+                self.sevendayperlabel.text =[NSString stringWithFormat:@"+%@",per7d [0]];
             } else {
                 self.sevendayperlabel.textColor = [UIColor redColor];
-                self.sevendayperlabel.text = per7d [0];
+                self.sevendayperlabel.text = [NSString stringWithFormat:@"%@",per7d [0]];
                 //does contain
                 
             }
             if ([per1hr[0] rangeOfString:@"-"].location == NSNotFound) {
                 //doesnt contain
                 self.onehrperlabel.textColor = [UIColor greenColor];
-                self.onehrperlabel.text = per1hr [0];
+               self.onehrperlabel.text = [NSString stringWithFormat:@"+%@",per1hr [0]];
             } else {
                 self.onehrperlabel.textColor = [UIColor redColor];
-                self.onehrperlabel.text = per1hr [0];
+               self.onehrperlabel.text = [NSString stringWithFormat:@"%@",per1hr [0]];
                 //does contain
                 
             }
@@ -269,6 +287,7 @@ NSMutableArray *marketcap;
         
         }
         else {
+            //this situation never arises,just left it there just in case
             [self stoploader];
     
          
@@ -325,7 +344,7 @@ NSMutableArray *marketcap;
 - (BOOL)shouldFillGraphWithLineNumber:(NSInteger)lineNumber{
     switch (lineNumber) {
         case 0:
-            return true;
+            return false;
             break;
         default:
             break;
@@ -414,10 +433,10 @@ NSMutableArray *marketcap;
     CGFloat width = 0;
     for (int i = 0; i < 1 ; i++) {
         UILabel *label = [[UILabel alloc] init];
-        [label setFont:[UIFont systemFontOfSize:12]];
+        [label setFont:[UIFont systemFontOfSize:11]];
         [label setTextAlignment:NSTextAlignmentCenter];
         [label setText:[NSString stringWithFormat:@"Price:$%@ Date:%@", yValue,xValue]];
-        [label setFrame:CGRectMake(0, y, 200, 40)];
+        [label setFrame:CGRectMake(0, y, 240, 40)];
         [view addSubview:label];
         
         width = WIDTH(label);
