@@ -39,6 +39,7 @@ NSMutableArray *shrt_form;
     [super viewDidLoad];
     i  = 0;
     ii=0;
+
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -68,7 +69,7 @@ NSMutableArray *shrt_form;
     }
     else{
        
-        [self getdatatable];
+       
       [self.tableCvi reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
          i++;
       
@@ -97,7 +98,7 @@ NSMutableArray *shrt_form;
        //add data to segue before showing about
        AboutViewController *controller = (
        AboutViewController*)segue.destinationViewController;
-       [controller loadView];
+       
    }
     
 }
@@ -240,7 +241,7 @@ iconfm =  shrt_form[indexPath.row];
     // Dispose of any resources that can be recreated.
 }
 -(void)getdatatable{
-    NSString *url = @"https://api.coinmarketcap.com/v1/ticker/?limit=900";
+    NSString *url = @"https://api.coinmarketcap.com/v1/ticker/?limit=500";
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
     [request setURL:[NSURL URLWithString:url]];
