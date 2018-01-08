@@ -47,6 +47,11 @@ NSMutableArray *shrt_form;
 
     GADRequest *request = [GADRequest request];
     [self.interstitial loadRequest:request];
+    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+    self.bannerView.rootViewController = self;
+    [self.bannerView loadRequest:[GADRequest request]];
+
+
     if(i==0){
         [NSTimer scheduledTimerWithTimeInterval:2
                                          target:self
@@ -167,7 +172,7 @@ cell.coinicon.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ++ii;
-    if (ii%5 == 0){
+    if (ii%2 == 0){
         if (self.interstitial.isReady) {
             [self.interstitial presentFromRootViewController:self];
         } else {
@@ -228,7 +233,7 @@ iconfm =  shrt_form[indexPath.row];
     // Dispose of any resources that can be recreated.
 }
 -(void)getdatatable{
-    NSString *url = @"https://api.coinmarketcap.com/v1/ticker/?limit=200";
+    NSString *url = @"https://api.coinmarketcap.com/v1/ticker/?limit=1000";
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
     [request setURL:[NSURL URLWithString:url]];

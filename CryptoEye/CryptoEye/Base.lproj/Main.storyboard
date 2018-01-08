@@ -106,10 +106,13 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="kVf-4V-jbL"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WTG-t6-pcx">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WTG-t6-pcx" customClass="GADBannerView">
                                 <rect key="frame" x="27" y="742" width="320" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="adUnitID" value="ca-app-pub-3940256099942544/2934735716"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.21568627450980393" green="0.27843137254901962" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -117,6 +120,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="CryptoEye" id="at0-lH-UiY"/>
                     <connections>
+                        <outlet property="bannerView" destination="WTG-t6-pcx" id="Xsy-r8-M8b"/>
                         <outlet property="tableCvi" destination="4C3-WV-xMw" id="fLs-3k-7Aa"/>
                         <segue destination="lRl-fp-45a" kind="showDetail" identifier="morecrypinfo" action="showViewController:sender:" id="9J6-rg-KU4"/>
                     </connections>
@@ -315,17 +319,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IFt-CD-pVc" customClass="GADBannerView">
-                                <rect key="frame" x="27" y="716" width="320" height="50"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pIn-At-GfI" customClass="GADBannerView">
+                                <rect key="frame" x="27" y="740" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="adUnitID" value="ca-app-pub-3940256099942544/2934735716"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.2156862745" green="0.2784313725" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="TtD-fK-3Nv"/>
                     </view>
                     <connections>
-                        <outlet property="bannerView" destination="IFt-CD-pVc" id="oN5-mC-FFd"/>
+                        <outlet property="bannerView" destination="pIn-At-GfI" id="auJ-Jy-R5C"/>
                         <outlet property="btn1" destination="2Aa-Rf-Azb" id="faT-tD-x0U"/>
                         <outlet property="btn2" destination="52G-Tj-eNj" id="XjL-jx-76U"/>
                         <outlet property="btn3" destination="wPo-8j-6Eg" id="HGj-7f-c6Z"/>

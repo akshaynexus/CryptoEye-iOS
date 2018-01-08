@@ -10,6 +10,7 @@
 
 @interface ViewController : UIViewController<UITableViewDelegate,UISearchBarDelegate,UITableViewDataSource,GADBannerViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableCvi;
+@property (strong, nonatomic) IBOutlet GADBannerView *bannerView;
 
 
 @property(nonatomic, strong) GADInterstitial*interstitial;
