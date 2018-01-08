@@ -49,23 +49,14 @@ NSMutableArray *shrt_form;
 
     GADRequest *request = [GADRequest request];
     [self.interstitial loadRequest:request];
-    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
-    self.bannerView.rootViewController = self;
+      self.bannerView.rootViewController = self;
+    self.bannerView.adUnitID = @"ca-app-pub-9656245162764779/9445807500";
+  
     [self.bannerView loadRequest:[GADRequest request]];
 
 
-    if(i==0){
-        [NSTimer scheduledTimerWithTimeInterval:2
-                                         target:self
-                                       selector:@selector(showloader)
-                                       userInfo:nil
-                                        repeats:NO];
-        [NSTimer scheduledTimerWithTimeInterval:5
-                                         target:self
-                                       selector:@selector(stoploader)
-                                       userInfo:nil
-                                        repeats:NO];
-        i++;
+    if(i>=0){
+        [self showloader];
     }
     else{
        
@@ -169,7 +160,7 @@ cell.coinicon.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[
 }
 - (GADInterstitial *)createAndLoadInterstitial {
     GADInterstitial *interstitial =
-    [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-3940256099942544/4411468910"];
+    [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-9656245162764779/8774711901"];
     interstitial.delegate = self;
     [interstitial loadRequest:[GADRequest request]];
     return interstitial;
@@ -180,7 +171,7 @@ cell.coinicon.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ++ii;
-    if (ii%2 == 0){
+    if (ii%3 == 0){
         if (self.interstitial.isReady) {
             [self.interstitial presentFromRootViewController:self];
         } else {
@@ -216,6 +207,7 @@ iconfm =  shrt_form[indexPath.row];
         [alert showError:self title:@"No Internet Connection" subTitle:@"Check your internet connection and try again." closeButtonTitle:@"OK" duration:0.0f]; // Error
     } else {
          [coverView addSubview:animation];
+            [self getdatatable];
         // change the background color to black and the opacity to 0.6
         coverView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
         // add this new view to your main view
@@ -228,7 +220,7 @@ iconfm =  shrt_form[indexPath.row];
             
             
         }];
-        [self getdatatable];
+    
       
     }
   
@@ -266,6 +258,7 @@ iconfm =  shrt_form[indexPath.row];
     }
     else
     {
+        [self stoploader];
         if ([jsonObject isKindOfClass:[NSArray class]])
         {
             //NSLog(@"it is an array!");

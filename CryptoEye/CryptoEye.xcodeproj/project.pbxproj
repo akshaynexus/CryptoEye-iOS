@@ -148,7 +148,6 @@
 		BA313BAA1FE2AD8A0045785F /* splashy_loader.json in Resources */ = {isa = PBXBuildFile; fileRef = BA313BA91FE2AD8A0045785F /* splashy_loader.json */; };
 		BA313BAC1FE2ADF60045785F /* ripple_loading_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = BA313BAB1FE2ADF60045785F /* ripple_loading_animation.json */; };
 		BA313BAE1FE2AF2C0045785F /* pulse_loader.json in Resources */ = {isa = PBXBuildFile; fileRef = BA313BAD1FE2AF2B0045785F /* pulse_loader.json */; };
-		BA6AC6A31FFFF80A00D8528E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6AC6A21FFFF80900D8528E /* MobileCoreServices.framework */; };
 		BA70E3021FDDBA9400A2DBFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA70E3011FDDBA9400A2DBFE /* AppDelegate.m */; };
 		BA70E3051FDDBA9400A2DBFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA70E3041FDDBA9400A2DBFE /* ViewController.m */; };
 		BA70E3081FDDBA9400A2DBFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA70E3061FDDBA9400A2DBFE /* Main.storyboard */; };
@@ -340,7 +339,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA1FC32A200204DF00D3694C /* SystemConfiguration.framework in Frameworks */,
-				BA6AC6A31FFFF80A00D8528E /* MobileCoreServices.framework in Frameworks */,
 				BA12059F1FE1029500361612 /* libsqlite3.tbd in Frameworks */,
 				FC859A1270AF499A1F6E89D1 /* Pods_CryptoEye.framework in Frameworks */,
 			);
