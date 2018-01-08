@@ -13,6 +13,7 @@
 #import "AnimLoaderViewController.h"
 @import Lottie;
 #import <tgmath.h>
+#import "AboutViewController.h"
 
 @interface ViewController (){
     NSArray *jsonArray;
@@ -94,6 +95,9 @@ NSMutableArray *shrt_form;
    }
    else if ([segue.identifier isEqualToString:@"showinfo"]){
        //add data to segue before showing about
+       AboutViewController *controller = (
+       AboutViewController*)segue.destinationViewController;
+       [controller loadView];
    }
     
 }
