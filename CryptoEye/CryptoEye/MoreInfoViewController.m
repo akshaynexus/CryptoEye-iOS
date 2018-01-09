@@ -21,6 +21,7 @@
     MultiLineGraphView *graph;
     NSString *graphapi;
 NSMutableArray *marketcap;
+    BOOL error2;
     NSMutableArray *price;
     NSMutableArray *cirsupply;
     NSMutableArray *per24hr;
@@ -61,7 +62,7 @@ NSMutableArray *marketcap;
 -(void)viewDidAppear:(BOOL)animated{
     //Setting admob stuff
     self.bannerView.rootViewController = self;
-    self.bannerView.adUnitID = @"ca-app-pub-9656245162764779/9445807500";
+    self.bannerView.adUnitID = @"ca-app-pub-9656245162764779/3080451969";
     [self.bannerView loadRequest:[GADRequest request]];
     self.webView.delegate = self;
  //showing preloader
@@ -124,6 +125,7 @@ NSMutableArray *marketcap;
             NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
             id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
             if (error) {
+                error2 = YES;
                 //handle if no graph is available for the particular coin
                 UILabel *label = [[UILabel alloc]initWithFrame:self.refView4Chart.frame];
                 label.textColor = [UIColor whiteColor];
@@ -169,12 +171,17 @@ NSMutableArray *marketcap;
                 
                 self.formatter = [[NSDateFormatter alloc] init];
                 [self.formatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"yyyyMMMd" options:0 locale:[NSLocale currentLocale]]];
-                [self createLineGraph];
+               
             }
         }
         
         dispatch_async(dispatch_get_main_queue(), ^(void){
+            if(error2 == YES){
+                [self stoploader];
+            }
+            else{[self createLineGraph];}
             //Run UI Updates
+     
         });
     });
     //pretty self explanatory
@@ -186,6 +193,7 @@ NSMutableArray *marketcap;
 -(void)stoploader{
     //pretty self explanatory
     animation.loopAnimation = false;
+    [animation removeFromSuperview];
 }
 -(void)showloader{
     // get your window screen size
@@ -236,7 +244,7 @@ NSMutableArray *marketcap;
             {
                 if ([jsonObject isKindOfClass:[NSArray class]])
                 {
-                    [self stoploader];
+         
                     
                     jsonArray = (NSArray *)jsonObject;
                     //setting individual array data
@@ -329,6 +337,7 @@ NSMutableArray *marketcap;
     [graph setShowCustomMarkerView:TRUE];
     [graph drawGraph];
     [self.view addSubview:graph];
+               [self stoploader];
 }
 
 #pragma mark MultiLineGraphViewDataSource
@@ -491,14 +500,8 @@ NSMutableArray *marketcap;
 }
 -(void)getid4api{
     NSString *url2 = [NSString stringWithFormat:@"http://139.59.11.43/api-getid.php?coin=%@",self.coinshrt];
-   
-    NSURL *url = [NSURL URLWithString:url2];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-   
-    [self.webView loadRequest:requestObj];
-    
-
     NSString *str = [self getDataFrom:url2];
+    
     str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"%@",str);
     tickerapi = [NSString stringWithFormat:@"%@%@",tickerapi,str];

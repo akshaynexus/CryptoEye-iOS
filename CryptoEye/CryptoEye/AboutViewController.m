@@ -19,6 +19,9 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    self.titleTXT.text = self.titlestr;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -38,7 +41,7 @@
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = @"3NTPeXYfFe2cBM782jJcsh4bmAxCgD44uE";
     MDCSnackbarMessage *message = [[MDCSnackbarMessage alloc] init];
-    message.text = @"Thanks for donating !";
+    message.text = @"Address has been copied to clipboard,Thanks for donating !";
     [MDCSnackbarManager showMessage:message];
 }
 
@@ -47,6 +50,11 @@
     MDCSnackbarMessage *message = [[MDCSnackbarMessage alloc] init];
     message.text = @"Thanks for donating !";
     [MDCSnackbarManager showMessage:message];
+    [[UIApplication sharedApplication] openURL: url];
+}
+- (IBAction)OpenGithubRepoAct:(id)sender {
+    NSURL* url = [[NSURL alloc] initWithString: @"https://github.com/akshaynexus/CryptoEye-iOS"];
+  
     [[UIApplication sharedApplication] openURL: url];
 }
 @end

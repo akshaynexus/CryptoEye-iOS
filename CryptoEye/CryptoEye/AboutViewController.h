@@ -11,5 +11,8 @@
 @interface AboutViewController : ViewController
 - (IBAction)copybtcadddratc:(id)sender;
 - (IBAction)altcoindonate:(id)sender;
-
+@property (strong, nonatomic) IBOutlet UILabel *titleTXT;
+- (IBAction)OpenGithubRepoAct:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *oplottiefilz;
+@property (nonatomic, strong) NSString *titlestr;
 @end

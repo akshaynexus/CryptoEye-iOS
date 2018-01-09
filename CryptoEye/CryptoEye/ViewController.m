@@ -50,13 +50,14 @@ NSMutableArray *shrt_form;
     GADRequest *request = [GADRequest request];
     [self.interstitial loadRequest:request];
       self.bannerView.rootViewController = self;
-    self.bannerView.adUnitID = @"ca-app-pub-9656245162764779/9445807500";
+    self.bannerView.adUnitID = @"ca-app-pub-9656245162764779/3080451969";
   
     [self.bannerView loadRequest:[GADRequest request]];
 
 
-    if(i>=0){
+    if(i==0){
         [self showloader];
+        ++i;
     }
     else{
        
@@ -87,8 +88,10 @@ NSMutableArray *shrt_form;
    }
    else if ([segue.identifier isEqualToString:@"showinfo"]){
        //add data to segue before showing about
-       AboutViewController *controller = (
+       AboutViewController *controller2 = (
        AboutViewController*)segue.destinationViewController;
+       controller2.titlestr = @"About & Credits";
+       [self stoploader];
        
    }
     
@@ -233,6 +236,7 @@ iconfm =  shrt_form[indexPath.row];
     // Dispose of any resources that can be recreated.
 }
 -(void)getdatatable{
+    
     NSString *url = @"https://api.coinmarketcap.com/v1/ticker/?limit=500";
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
