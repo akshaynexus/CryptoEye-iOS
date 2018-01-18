@@ -159,8 +159,48 @@
 		BA85445620039DB9000760E0 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA85445520039DB9000760E0 /* AboutViewController.m */; };
 		BABDC92320010C6100F246AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BABDC92220010C6100F246AB /* GoogleService-Info.plist */; };
 		BABDC92820012F5500F246AB /* loader_spinner.json in Resources */ = {isa = PBXBuildFile; fileRef = BABDC92720012F5400F246AB /* loader_spinner.json */; };
+		BAE671992010E73D001F9B7E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAE671962010E6F4001F9B7E /* Charts.framework */; };
+		BAE6719A2010E73D001F9B7E /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BAE671962010E6F4001F9B7E /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FC859A1270AF499A1F6E89D1 /* Pods_CryptoEye.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA772920A4DA939C33B5EA8 /* Pods_CryptoEye.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BAE671952010E6F4001F9B7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BAE671902010E6F4001F9B7E /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		BAE671972010E6F4001F9B7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BAE671902010E6F4001F9B7E /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
+		BAE6719B2010E73D001F9B7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BAE671902010E6F4001F9B7E /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A58A4ED274A941CA248EA921;
+			remoteInfo = Charts;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BAE6719D2010E73E001F9B7E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BAE6719A2010E73D001F9B7E /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		388484147F54C567A0D6DDB6 /* Pods-CryptoEye.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoEye.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoEye/Pods-CryptoEye.debug.xcconfig"; sourceTree = "<group>"; };
@@ -330,6 +370,7 @@
 		BABDC92220010C6100F246AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BABDC92420010D9C00F246AB /* CryptoEye.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CryptoEye.entitlements; sourceTree = "<group>"; };
 		BABDC92720012F5400F246AB /* loader_spinner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader_spinner.json; sourceTree = "<group>"; };
+		BAE671902010E6F4001F9B7E /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		BBA772920A4DA939C33B5EA8 /* Pods_CryptoEye.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoEye.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -339,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA1FC32A200204DF00D3694C /* SystemConfiguration.framework in Frameworks */,
+				BAE671992010E73D001F9B7E /* Charts.framework in Frameworks */,
 				BA12059F1FE1029500361612 /* libsqlite3.tbd in Frameworks */,
 				FC859A1270AF499A1F6E89D1 /* Pods_CryptoEye.framework in Frameworks */,
 			);
@@ -359,6 +401,7 @@
 		BA70E2F41FDDBA9400A2DBFE = {
 			isa = PBXGroup;
 			children = (
+				BAE671902010E6F4001F9B7E /* Charts.xcodeproj */,
 				BA70E2FF1FDDBA9400A2DBFE /* CryptoEye */,
 				BA70E2FE1FDDBA9400A2DBFE /* Products */,
 				59554DF3C9E961BBED3B1595 /* Pods */,
@@ -549,6 +592,15 @@
 			path = CryptoIcons;
 			sourceTree = "<group>";
 		};
+		BAE671912010E6F4001F9B7E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BAE671962010E6F4001F9B7E /* Charts.framework */,
+				BAE671982010E6F4001F9B7E /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C3517E353AC9262F262F518C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -574,10 +626,12 @@
 				BA70E2FB1FDDBA9400A2DBFE /* Resources */,
 				3823EAA15918008F29DF716E /* [CP] Embed Pods Frameworks */,
 				5956C4704E3089361A60DC64 /* [CP] Copy Pods Resources */,
+				BAE6719D2010E73E001F9B7E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BAE6719C2010E73D001F9B7E /* PBXTargetDependency */,
 			);
 			name = CryptoEye;
 			productName = CryptoEye;
@@ -618,12 +672,35 @@
 			mainGroup = BA70E2F41FDDBA9400A2DBFE;
 			productRefGroup = BA70E2FE1FDDBA9400A2DBFE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BAE671912010E6F4001F9B7E /* Products */;
+					ProjectRef = BAE671902010E6F4001F9B7E /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				BA70E2FC1FDDBA9400A2DBFE /* CryptoEye */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BAE671962010E6F4001F9B7E /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = BAE671952010E6F4001F9B7E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BAE671982010E6F4001F9B7E /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = BAE671972010E6F4001F9B7E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BA70E2FB1FDDBA9400A2DBFE /* Resources */ = {
@@ -843,6 +920,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		BAE6719C2010E73D001F9B7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = BAE6719B2010E73D001F9B7E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		BA70E3061FDDBA9400A2DBFE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -971,6 +1056,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 388484147F54C567A0D6DDB6 /* Pods-CryptoEye.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CryptoEye/CryptoEye.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -987,6 +1073,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4580149F785BE414F6442F25 /* Pods-CryptoEye.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CryptoEye/CryptoEye.entitlements;
 				CODE_SIGN_STYLE = Automatic;
