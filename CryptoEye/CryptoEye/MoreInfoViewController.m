@@ -9,6 +9,7 @@
 #import "MoreInfoViewController.h"
 @import Lottie;
 @import Charts;
+#import "DateValueFormatter.h"
 @import GoogleMobileAds;
 @import MaterialComponents;
 #define SECS_PER_DAY (86400)
@@ -18,7 +19,6 @@
      NSArray *jsonArray2;
     NSMutableArray *coinid;
     NSMutableArray *onedayvol;
-    MultiLineGraphView *graph;
     NSString *graphapi;
 NSMutableArray *marketcap;
     BOOL error2;
@@ -240,27 +240,18 @@ NSMutableArray *marketcap;
     [linechart.rightAxis setEnabled:NO];
     NSMutableArray *dataSets = [[NSMutableArray alloc] init];
     [dataSets addObject:dataset];
-                NSMutableArray *arraytt = [[NSMutableArray alloc] init];
-    //            array = time4graph;
-    //            for (NSMutableArray *tempObject in price4rmapi) {
-    //
-    //                [array addObject:[tempObject objectAtIndex:0]]];
-    //            }
-                for (int index = 0; index <[time4graph count]; index++) {
-                    NSString *time = [NSString stringWithFormat:@"%@",[time4graph objectAtIndex:index]];
-                    double unixTimeStamp =[time doubleValue];
-                    NSTimeInterval timeInterval=unixTimeStamp/1000;
-                    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
-                    NSDateFormatter *dateformatter=[[NSDateFormatter alloc]init];
-                    [dateformatter setLocale:[NSLocale currentLocale]];
-                    [dateformatter setDateFormat:@"dd-MM-yyyy"];
-                    NSString *dateString=[dateformatter stringFromDate:date];
-                    arraytt[index] = [NSString stringWithFormat:@"%@",dateString] ;
-                }
+    linechart.delegate = self;
 
     LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
-    [linechart.xAxis setLabelCount:arraytt.count force:TRUE];
-    linechart.xAxis.valueFormatter = [ChartIndexAxisValueFormatter withValues:arraytt];
+//    [linechart.xAxis setLabelCount:arraytt.count force:TRUE];
+    DateValueFormatter *formatter2;
+    formatter2 = [[DateValueFormatter alloc] init];
+    linechart.xAxis.valueFormatter = formatter2;
+    linechart.xAxis.granularity = 10;
+   
+    linechart.xAxis.granularityEnabled = true;
+    linechart.drawMarkers = true;
+    linechart.xAxis.avoidFirstLastClippingEnabled = false;
     linechart.xAxis.drawLabelsEnabled = TRUE;
     linechart.data = data;
     [self.view addSubview:linechart];
@@ -269,6 +260,11 @@ NSMutableArray *marketcap;
     //pretty self explanatory
     animation.loopAnimation = false;
     [animation removeFromSuperview];
+}
+- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
+{
+    
+    NSLog(@"%f",entry.y);
 }
 -(void)showloader{
     // get your window screen size
@@ -400,162 +396,6 @@ NSMutableArray *marketcap;
     });
 
 }
-
-
-//#pragma Mark CreateLineGraph
-//- (void)createLineGraph{
-//   [graph setDataSource:NULL];
-//    [graph setDelegate:self];
-//    [graph setHidden:NO];
-//    [graph setDataSource:self];
-//    [graph setLegendViewType:LegendTypeHorizontal];
-//    [graph setShowCustomMarkerView:TRUE];
-//    [graph drawGraph];
-//    [self.view addSubview:graph];
-//               [self stoploader];
-//}
-//
-//#pragma mark MultiLineGraphViewDataSource
-//- (NSInteger)numberOfLinesToBePlotted{
-//    return 1;
-//}
-//
-//- (LineDrawingType)typeOfLineToBeDrawnWithLineNumber:(NSInteger)lineNumber{
-//    switch (lineNumber) {
-//        case 0:
-//            return LineDefault;
-//            break;
-//    }
-//    return LineDefault;
-//}
-//
-//- (UIColor *)colorForTheLineWithLineNumber:(NSInteger)lineNumber{
-//
-//    UIColor *randColor = [UIColor colorWithRed:0/255.0f green:255/255.0f blue:0/255.0f alpha:1.0f];
-//    return randColor;
-//}
-//
-//- (CGFloat)widthForTheLineWithLineNumber:(NSInteger)lineNumber{
-//    return 1;
-//}
-//
-//- (NSString *)nameForTheLineWithLineNumber:(NSInteger)lineNumber{
-//    return [NSString stringWithFormat:@"Price of %@",self.coinlabel.text];
-//}
-//
-//- (BOOL)shouldFillGraphWithLineNumber:(NSInteger)lineNumber{
-//    switch (lineNumber) {
-//        case 0:
-//            return false;
-//            break;
-//        default:
-//            break;
-//    }
-//    return false;
-//}
-//
-//- (BOOL)shouldDrawPointsWithLineNumber:(NSInteger)lineNumber{
-//    switch (lineNumber) {
-//        case 0:
-//            return false;
-//            break;
-//        default:
-//            break;
-//    }
-//    return false;
-//}
-//
-//- (NSMutableArray *)dataForYAxisWithLineNumber:(NSInteger)lineNumber {
-//    switch (lineNumber) {
-//        case 0:
-//        {
-//            NSMutableArray *array = [[NSMutableArray alloc] init];
-////            for (NSMutableArray *tempObject in price4rmapi) {
-//////                [time4graph addObject:[tempObject objectAtIndex:0]];
-////                [array addObject:[tempObject objectAtIndex:1]];
-////            }
-////            for (int i = 0; i < [price4graphdata count]; i++) {
-////                [array addObject:[NSNumber numberWithLong:random() % 100]];
-////            }
-//            for (int index = 0; index <[price4graphdata count]; index++) {
-//                array[index] = [NSString stringWithFormat:@"%@",[price4graphdata objectAtIndex: index]] ;
-//            }
-//            return array;
-//        }
-//            break;
-//
-//        default:
-//            break;
-//    }
-//    return [[NSMutableArray alloc] init];
-//}
-//
-//- (NSMutableArray *)dataForXAxisWithLineNumber:(NSInteger)lineNumber {
-//    switch (lineNumber) {
-//        case 0:
-//        {
-//            NSMutableArray *array = [[NSMutableArray alloc] init];
-////            array = time4graph;
-////            for (NSMutableArray *tempObject in price4rmapi) {
-////
-////                [array addObject:[tempObject objectAtIndex:0]]];
-////            }
-//            for (int index = 0; index <[time4graph count]; index++) {
-//                NSString *time = [NSString stringWithFormat:@"%@",[time4graph objectAtIndex:index]];
-//                double unixTimeStamp =[time doubleValue];
-//                NSTimeInterval timeInterval=unixTimeStamp/1000;
-//                NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
-//                NSDateFormatter *dateformatter=[[NSDateFormatter alloc]init];
-//                [dateformatter setLocale:[NSLocale currentLocale]];
-//                [dateformatter setDateFormat:@"dd-MM-yyyy"];
-//                NSString *dateString=[self.formatter stringFromDate:date];
-//                array[index] = [NSString stringWithFormat:@"%@",dateString] ;
-//            }
-//            return array;
-//        }
-//            break;
-//
-//        default:
-//            break;
-//    }
-//    return [[NSMutableArray alloc] init];
-//}
-//
-//- (UIView *)customViewForLineChartTouchWithXValue:(id)xValue andYValue:(id)yValue{
-//    UIView *view = [[UIView alloc] init];
-//    [view setBackgroundColor:[UIColor whiteColor]];
-//    [view.layer setCornerRadius:4.0F];
-//    [view.layer setBorderWidth:1.0F];
-//    [view.layer setBorderColor:[[UIColor lightGrayColor] CGColor]];
-//    [view.layer setShadowColor:[[UIColor blackColor] CGColor]];
-//    [view.layer setShadowRadius:2.0F];
-//    [view.layer setShadowOpacity:0.3F];
-//
-//    CGFloat y = 0;
-//    CGFloat width = 0;
-//    for (int i = 0; i < 1 ; i++) {
-//        UILabel *label = [[UILabel alloc] init];
-//        [label setFont:[UIFont systemFontOfSize:11]];
-//        [label setTextAlignment:NSTextAlignmentCenter];
-//        [label setText:[NSString stringWithFormat:@"Price:$%@ Date:%@", yValue,xValue]];
-//        [label setFrame:CGRectMake(0, y, 240, 40)];
-//        [view addSubview:label];
-//
-//        width = WIDTH(label);
-//        y = BOTTOM(label);
-//    }
-//
-//    [view setFrame:CGRectMake(0, 0, width, y)];
-//    return view;
-//}
-//
-//#pragma mark MultiLineGraphViewDelegate
-//- (void)didTapWithValuesAtX:(NSString *)xValue valuesAtY:(NSString *)yValue{
-//    NSLog(@"%@", yValue);
-//}
-
-
-
 - (NSString *) getDataFrom:(NSString *)url{
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
@@ -588,60 +428,60 @@ NSMutableArray *marketcap;
 
 
 - (IBAction)daybtn:(id)sender {
-    BOOL doesContain = [self.view.subviews containsObject:graph];
-    if(doesContain){
-        [graph removeFromSuperview];
-    }
-     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"1day"];
-       // [graph reloadGraph];
+//    BOOL doesContain = [self.view.subviews containsObject:graph];
+//    if(doesContain){
+//        [graph removeFromSuperview];
+//    }
+//     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"1day"];
+//       // [graph reloadGraph];
 }
 
 - (IBAction)day7btn:(id)sender {
-    BOOL doesContain = [self.view.subviews containsObject:graph];
-    if(doesContain){
-        [graph removeFromSuperview];
-    }
-     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"7day"];
-     //   [graph reloadGraph];
+//    BOOL doesContain = [self.view.subviews containsObject:graph];
+//    if(doesContain){
+//        [graph removeFromSuperview];
+//    }
+//     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"7day"];
+//     //   [graph reloadGraph];
 }
 
 - (IBAction)month1btn:(id)sender {
-    BOOL doesContain = [self.view.subviews containsObject:graph];
-    if(doesContain  == YES){
-        [graph removeFromSuperview];
-    }
-    [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"30day"];
-   //  [graph reloadGraph];
+//   // BOOL doesContain = [self.view.subviews containsObject:graph];
+//    if(doesContain  == YES){
+//       // [graph removeFromSuperview];
+//    }
+//    [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"30day"];
+//   //  [graph reloadGraph];
     }
 
 
 - (IBAction)month3btn:(id)sender {
-    BOOL doesContain = [self.view.subviews containsObject:graph];
-    if(doesContain){
-        [graph removeFromSuperview];
-        [graph setHidden:YES];
-        [self.view sendSubviewToBack:graph];
-    }
-     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"90day"];
-      //  [graph reloadGraph];
+//    //BOOL doesContain = [self.view.subviews containsObject:graph];
+//    if(doesContain){
+//        //[graph removeFromSuperview];
+//       // [graph setHidden:YES];
+//       // [self.view sendSubviewToBack:graph];
+//    }
+//     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"90day"];
+//      //  [graph reloadGraph];
 }
 
 - (IBAction)month6btn:(id)sender {
-    BOOL doesContain = [self.view.subviews containsObject:graph];
-    if(doesContain){
-        [graph removeFromSuperview];
-    }
-     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"180day"];
-       //  [graph reloadGraph];
+//BOOL doesContain = [self.view.subviews containsObject:];
+//    if(doesContain){
+//        //[graph removeFromSuperview];
+//    }
+//     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"180day"];
+//       //  [graph reloadGraph];
 }
 
 - (IBAction)year1btn:(id)sender {
-    BOOL doesContain = [self.view.subviews containsObject:graph];
-    if(doesContain){
-        [graph removeFromSuperview];
-    }
-     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"360day"];
-      //  [graph reloadGraph];
+//   // BOOL doesContain = [self.view.subviews containsObject:graph];
+//    if(doesContain){
+//       // [graph removeFromSuperview];
+//    }
+//     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"360day"];
+//      //  [graph reloadGraph];
 }
 - (IBAction)alldatabtn:(id)sender {
 }

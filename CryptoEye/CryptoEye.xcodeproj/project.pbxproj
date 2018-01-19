@@ -159,6 +159,9 @@
 		BA85445620039DB9000760E0 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA85445520039DB9000760E0 /* AboutViewController.m */; };
 		BABDC92320010C6100F246AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BABDC92220010C6100F246AB /* GoogleService-Info.plist */; };
 		BABDC92820012F5500F246AB /* loader_spinner.json in Resources */ = {isa = PBXBuildFile; fileRef = BABDC92720012F5400F246AB /* loader_spinner.json */; };
+		BAF004962012067A00AF0B16 /* DateValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF004902012067600AF0B16 /* DateValueFormatter.m */; };
+		BAF004972012067A00AF0B16 /* IntAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF004922012067800AF0B16 /* IntAxisValueFormatter.m */; };
+		BAF004982012067A00AF0B16 /* DayAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF004932012067900AF0B16 /* DayAxisValueFormatter.m */; };
 		FC859A1270AF499A1F6E89D1 /* Pods_CryptoEye.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA772920A4DA939C33B5EA8 /* Pods_CryptoEye.framework */; };
 /* End PBXBuildFile section */
 
@@ -343,6 +346,12 @@
 		BABDC92220010C6100F246AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BABDC92420010D9C00F246AB /* CryptoEye.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CryptoEye.entitlements; sourceTree = "<group>"; };
 		BABDC92720012F5400F246AB /* loader_spinner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader_spinner.json; sourceTree = "<group>"; };
+		BAF004902012067600AF0B16 /* DateValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateValueFormatter.m; sourceTree = "<group>"; };
+		BAF004912012067700AF0B16 /* DateValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateValueFormatter.h; sourceTree = "<group>"; };
+		BAF004922012067800AF0B16 /* IntAxisValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntAxisValueFormatter.m; sourceTree = "<group>"; };
+		BAF004932012067900AF0B16 /* DayAxisValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayAxisValueFormatter.m; sourceTree = "<group>"; };
+		BAF004942012067900AF0B16 /* IntAxisValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntAxisValueFormatter.h; sourceTree = "<group>"; };
+		BAF004952012067A00AF0B16 /* DayAxisValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayAxisValueFormatter.h; sourceTree = "<group>"; };
 		BBA772920A4DA939C33B5EA8 /* Pods_CryptoEye.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoEye.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -390,6 +399,7 @@
 		BA70E2FF1FDDBA9400A2DBFE /* CryptoEye */ = {
 			isa = PBXGroup;
 			children = (
+				BAF004992012069500AF0B16 /* Formatters */,
 				BA1FC32B2002057600D3694C /* Reachability.h */,
 				BA1FC32C2002057600D3694C /* Reachability.m */,
 				BABDC92420010D9C00F246AB /* CryptoEye.entitlements */,
@@ -560,6 +570,19 @@
 				BA32338A1FDEA2D1005D2166 /* zen.png */,
 			);
 			path = CryptoIcons;
+			sourceTree = "<group>";
+		};
+		BAF004992012069500AF0B16 /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				BAF004912012067700AF0B16 /* DateValueFormatter.h */,
+				BAF004902012067600AF0B16 /* DateValueFormatter.m */,
+				BAF004952012067A00AF0B16 /* DayAxisValueFormatter.h */,
+				BAF004932012067900AF0B16 /* DayAxisValueFormatter.m */,
+				BAF004942012067900AF0B16 /* IntAxisValueFormatter.h */,
+				BAF004922012067800AF0B16 /* IntAxisValueFormatter.m */,
+			);
+			path = Formatters;
 			sourceTree = "<group>";
 		};
 		C3517E353AC9262F262F518C /* Frameworks */ = {
@@ -844,14 +867,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAF004962012067A00AF0B16 /* DateValueFormatter.m in Sources */,
 				BA313BA41FE29FD00045785F /* AnimLoaderViewController.m in Sources */,
 				BA23FD731FDFFFA4000273D9 /* MoreInfoViewController.m in Sources */,
 				BA85445620039DB9000760E0 /* AboutViewController.m in Sources */,
 				BA70E3181FDDBD4C00A2DBFE /* CryptoTableViewCell.m in Sources */,
 				BA1FC32D2002057600D3694C /* Reachability.m in Sources */,
 				BA70E3051FDDBA9400A2DBFE /* ViewController.m in Sources */,
+				BAF004972012067A00AF0B16 /* IntAxisValueFormatter.m in Sources */,
 				BA70E3101FDDBA9400A2DBFE /* main.m in Sources */,
 				BA70E3021FDDBA9400A2DBFE /* AppDelegate.m in Sources */,
+				BAF004982012067A00AF0B16 /* DayAxisValueFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
