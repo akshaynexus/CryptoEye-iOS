@@ -22,10 +22,12 @@ NSMutableArray *shrt_form;
     NSMutableArray *priceusd;
     NSMutableArray *perctday;
     NSMutableArray *name;
+        NSMutableArray *coinids;
     NSString *iconfm;
     NSString *coinnamepush;
     NSString *idpush;
     UIView* coverView;
+    NSString *idtopush;
     NSInteger *i ;
    int ii;
     LOTAnimationView *animation;
@@ -83,6 +85,7 @@ NSMutableArray *shrt_form;
         controller.coinimage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[iconfm lowercaseString]]];
         controller.coinLabelStr = coinnamepush;
        controller.coinshrt = iconfm;
+       controller.coinid4api = idtopush;
        controller.idstr = idpush;
        
    }
@@ -182,9 +185,11 @@ cell.coinicon.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[
         }
 
     }
+    
 iconfm =  shrt_form[indexPath.row];
     coinnamepush =  name[indexPath.row];
     idpush = rank[indexPath.row];
+    idtopush = coinids[indexPath.row];
     [self performSegueWithIdentifier:@"morecrypinfo" sender:self];
     
 }
@@ -274,6 +279,7 @@ iconfm =  shrt_form[indexPath.row];
             
             
             name  =[jsonArray valueForKey: @"name"];
+            coinids = [jsonArray valueForKey:@"id"];
             
             rank  =[jsonArray valueForKey: @"rank"];
             priceusd = [jsonArray valueForKey:@"price_usd"];

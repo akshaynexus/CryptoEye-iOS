@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *sevendayperlabel;
 @property (nonatomic, strong) NSString *coinLabelStr;
 @property (nonatomic, strong) NSString *idstr;
+@property (nonatomic, strong) NSString *coinid4api;
 @property (nonatomic, strong) NSString *coinshrt;
 @property (nonatomic, strong) NSString *imageName;
 @property (strong, nonatomic) IBOutlet UIView *refView4Chart;

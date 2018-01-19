@@ -240,7 +240,7 @@ NSMutableArray *marketcap;
     [linechart.rightAxis setEnabled:NO];
     NSMutableArray *dataSets = [[NSMutableArray alloc] init];
     [dataSets addObject:dataset];
-                NSMutableArray *array = [[NSMutableArray alloc] init];
+                NSMutableArray *arraytt = [[NSMutableArray alloc] init];
     //            array = time4graph;
     //            for (NSMutableArray *tempObject in price4rmapi) {
     //
@@ -255,12 +255,12 @@ NSMutableArray *marketcap;
                     [dateformatter setLocale:[NSLocale currentLocale]];
                     [dateformatter setDateFormat:@"dd-MM-yyyy"];
                     NSString *dateString=[dateformatter stringFromDate:date];
-                    array[index] = [NSString stringWithFormat:@"%@",dateString] ;
+                    arraytt[index] = [NSString stringWithFormat:@"%@",dateString] ;
                 }
 
     LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
-    [linechart.xAxis setLabelCount:array.count force:TRUE];
-    linechart.xAxis.valueFormatter = [ChartIndexAxisValueFormatter withValues:array];
+    [linechart.xAxis setLabelCount:arraytt.count force:TRUE];
+    linechart.xAxis.valueFormatter = [ChartIndexAxisValueFormatter withValues:arraytt];
     linechart.xAxis.drawLabelsEnabled = TRUE;
     linechart.data = data;
     [self.view addSubview:linechart];
@@ -574,12 +574,7 @@ NSMutableArray *marketcap;
     return [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
 }
 -(void)getid4api{
-    NSString *url2 = [NSString stringWithFormat:@"http://139.59.11.43/api-getid.php?coin=%@",self.coinshrt];
-    NSString *str = [self getDataFrom:url2];
-    
-    str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSLog(@"%@",str);
-    tickerapi = [NSString stringWithFormat:@"%@%@",tickerapi,str];
+    tickerapi = [NSString stringWithFormat:@"%@%@",tickerapi,self.coinid4api];
         [self performSelectorInBackground:@selector(getcoins) withObject:NULL];
     }
 
