@@ -1,4 +1,5 @@
 PODS:
+  - CCDropDownMenus (0.1.2)
   - Charts (3.0.5):
     - Charts/Core (= 3.0.5)
   - Charts/Core (3.0.5)
@@ -392,10 +393,12 @@ PODS:
   - nanopb/encode (0.3.8)
   - Protobuf (3.5.0)
   - SCLAlertView-Objective-C (1.1.2)
+  - TOMSMorphingLabel (0.5.1)
   - uikit-utils (0.5.1):
     - ios-versioncheck (~> 1.0.1)
 
 DEPENDENCIES:
+  - CCDropDownMenus
   - Charts (~> 3.0.4)
   - drCharts (from `https://github.com/Zomato/DR-charts.git`)
   - Firebase/AdMob
@@ -405,6 +408,7 @@ DEPENDENCIES:
   - lottie-ios
   - MaterialComponents
   - SCLAlertView-Objective-C (~> 1.1)
+  - TOMSMorphingLabel
 
 EXTERNAL SOURCES:
   drCharts:
@@ -416,6 +420,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/Zomato/DR-charts.git
 
 SPEC CHECKSUMS:
+  CCDropDownMenus: ee65b63286a16354907fdde49c40c1817f463470
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
   drCharts: fd568784a514819ea7af12aabdd67e00ac359370
   Firebase: 710decbbc6d9d48530e9a5dba3209740c3532e05
@@ -437,8 +442,9 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   SCLAlertView-Objective-C: 0e54351fa4f98a5c7c6ad3727e6dbb46784534e5
+  TOMSMorphingLabel: 3e88a2bf5257f8993ebc51fb3109187a0bfb2c4d
   uikit-utils: 301717f97302d5a1fe0234e3316b9ca2c3794244
 
-PODFILE CHECKSUM: 4bf4599196423de4627e846734ca1c06ad8f22be
+PODFILE CHECKSUM: 8514a0fc82e7fb01a29b9d2f31d770372d9b341a
 
 COCOAPODS: 1.1.1

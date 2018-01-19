@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1120F2D07DDF5663E884509EC80194B3'
-               BlueprintName = 'SCLAlertView-Objective-C'
+               BlueprintIdentifier = 'B43701316AD045E47B76F1042E5A19BB'
+               BlueprintName = 'CCDropDownMenus'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SCLAlertView-Objective-C.framework'>
+               BuildableName = 'CCDropDownMenus.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

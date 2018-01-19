@@ -7,9 +7,11 @@
 //
 @import Charts;
 @import GoogleMobileAds;
+@import CCDropDownMenus;
 #import "ViewController.h"
-@interface MoreInfoViewController : ViewController<UIWebViewDelegate,ChartViewDelegate>
+@interface MoreInfoViewController : ViewController<UIWebViewDelegate,ChartViewDelegate,CCDropDownMenuDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *coinimage;
+@property (weak, nonatomic) IBOutlet UILabel *showpricelabel;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UILabel *idlabel;
 @property (strong, nonatomic) IBOutlet UILabel *coinlabel;
@@ -28,13 +30,6 @@
 @property (strong, nonatomic) IBOutlet UIView *refView4Chart;
 @property (nonatomic,strong) NSNumber *intt;
 @property (nonatomic,strong) NSDateFormatter *formatter;
-- (IBAction)daybtn:(id)sender;
-- (IBAction)day7btn:(id)sender;
-- (IBAction)month1btn:(id)sender;
-- (IBAction)month3btn:(id)sender;
-- (IBAction)month6btn:(id)sender;
-- (IBAction)year1btn:(id)sender;
-- (IBAction)alldatabtn:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *btn1;
 @property (strong, nonatomic) IBOutlet UIButton *btn2;
 @property (strong, nonatomic) IBOutlet UIButton *btn3;
@@ -44,6 +39,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *btn7;
 @property (strong, nonatomic) IBOutlet GADBannerView *bannerView;
 @property(nonatomic, strong) GADInterstitial*interstitial;
+@property (weak, nonatomic) IBOutlet ManaDropDownMenu *dropref;
+
+
 
 
 

@@ -84,6 +84,7 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/CCDropDownMenus/CCDropDownMenus.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Charts/Charts.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MDFInternationalization/MDFInternationalization.framework"
@@ -94,6 +95,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/MotionTransitioning/MotionTransitioning.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Protobuf/Protobuf.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SCLAlertView-Objective-C/SCLAlertView_Objective_C.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/TOMSMorphingLabel/TOMSMorphingLabel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/drCharts/drCharts.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ios-linechart/ios_linechart.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ios-versioncheck/ios_versioncheck.framework"
@@ -102,6 +104,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/uikit-utils/uikit_utils.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/CCDropDownMenus/CCDropDownMenus.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Charts/Charts.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MDFInternationalization/MDFInternationalization.framework"
@@ -112,6 +115,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/MotionTransitioning/MotionTransitioning.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Protobuf/Protobuf.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SCLAlertView-Objective-C/SCLAlertView_Objective_C.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/TOMSMorphingLabel/TOMSMorphingLabel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/drCharts/drCharts.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ios-linechart/ios_linechart.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ios-versioncheck/ios_versioncheck.framework"

@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1120F2D07DDF5663E884509EC80194B3'
-               BlueprintName = 'SCLAlertView-Objective-C'
+               BlueprintIdentifier = 'BE0CF13D3F8068E7536FF57BAEEAC656'
+               BlueprintName = 'TOMSMorphingLabel'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SCLAlertView-Objective-C.framework'>
+               BuildableName = 'TOMSMorphingLabel.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

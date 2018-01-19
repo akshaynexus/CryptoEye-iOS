@@ -15,4 +15,6 @@ pod 'Firebase/Messaging'
 pod 'SCLAlertView-Objective-C', '~> 1.1'
 pod 'Firebase/AdMob'
 pod 'Charts', '~> 3.0.4'
+pod 'CCDropDownMenus'
+pod "TOMSMorphingLabel"
 end

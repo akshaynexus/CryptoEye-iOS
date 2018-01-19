@@ -160,71 +160,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <webView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q2X-uQ-e5F">
-                                <rect key="frame" x="319" y="24" width="44" height="50"/>
+                                <rect key="frame" x="331" y="24" width="32" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Aa-Rf-Azb">
-                                <rect key="frame" x="-4" y="716" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="1 DAY"/>
-                                <connections>
-                                    <action selector="daybtn:" destination="lRl-fp-45a" eventType="touchUpInside" id="M0x-Dd-wPE"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52G-Tj-eNj">
-                                <rect key="frame" x="95" y="716" width="84" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="7 DAYS"/>
-                                <connections>
-                                    <action selector="day7btn:" destination="lRl-fp-45a" eventType="touchUpInside" id="Fry-BD-UHD"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPo-8j-6Eg">
-                                <rect key="frame" x="185" y="716" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="1 MONTH"/>
-                                <connections>
-                                    <action selector="month1btn:" destination="lRl-fp-45a" eventType="touchUpInside" id="5m7-ol-tz2"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewN-gP-EQJ">
-                                <rect key="frame" x="271" y="716" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="3 MONTHS"/>
-                                <connections>
-                                    <action selector="month3btn:" destination="lRl-fp-45a" eventType="touchUpInside" id="j4k-p2-btb"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBA-kG-IUq">
-                                <rect key="frame" x="142" y="750" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="1 YEAR"/>
-                                <connections>
-                                    <action selector="year1btn:" destination="lRl-fp-45a" eventType="touchUpInside" id="Lid-2c-fBX"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLb-9a-e9h">
-                                <rect key="frame" x="272" y="750" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="ALL DATA"/>
-                                <connections>
-                                    <action selector="alldatabtn:" destination="lRl-fp-45a" eventType="touchUpInside" id="gwf-0h-DCp"/>
-                                </connections>
-                            </button>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIP-Qj-nfh">
-                                <rect key="frame" x="0.0" y="411" width="375" height="303"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.33515673309999999" green="0.44004256619999998" blue="0.49718953729999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTg-wp-DGD">
-                                <rect key="frame" x="14" y="751" width="98" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="6 MONTHS"/>
-                                <connections>
-                                    <action selector="month6btn:" destination="lRl-fp-45a" eventType="touchUpInside" id="2GF-fU-9uV"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Az-VO-hkn">
                                 <rect key="frame" x="9" y="188" width="68" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -324,8 +263,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pIn-At-GfI" customClass="GADBannerView">
-                                <rect key="frame" x="27" y="740" width="320" height="50"/>
+                                <rect key="frame" x="27" y="743" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIP-Qj-nfh">
+                                <rect key="frame" x="0.0" y="442" width="375" height="258"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.33515673309999999" green="0.44004256619999998" blue="0.49718953729999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="---" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Mv-XR-1z6">
+                                <rect key="frame" x="0.0" y="702" width="375" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j1T-yg-JS6" customClass="ManaDropDownMenu">
+                                <rect key="frame" x="89" y="413" width="197" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -334,22 +290,17 @@
                     </view>
                     <connections>
                         <outlet property="bannerView" destination="pIn-At-GfI" id="auJ-Jy-R5C"/>
-                        <outlet property="btn1" destination="2Aa-Rf-Azb" id="faT-tD-x0U"/>
-                        <outlet property="btn2" destination="52G-Tj-eNj" id="XjL-jx-76U"/>
-                        <outlet property="btn3" destination="wPo-8j-6Eg" id="HGj-7f-c6Z"/>
-                        <outlet property="btn4" destination="ewN-gP-EQJ" id="ZUe-Ay-Mtd"/>
-                        <outlet property="btn5" destination="XTg-wp-DGD" id="bFj-7A-2qM"/>
-                        <outlet property="btn6" destination="mBA-kG-IUq" id="pdX-3B-gqT"/>
-                        <outlet property="btn7" destination="XLb-9a-e9h" id="a4E-FA-UX5"/>
                         <outlet property="cirsupplylabel" destination="Ljy-iK-DGB" id="Njp-t9-cLn"/>
                         <outlet property="coinimage" destination="pkq-ap-Ei0" id="2z8-mw-gpl"/>
                         <outlet property="coinlabel" destination="mLv-Aj-OiX" id="lXt-Ze-1gh"/>
+                        <outlet property="dropref" destination="j1T-yg-JS6" id="fGI-pu-aR6"/>
                         <outlet property="idlabel" destination="kO0-vz-FBM" id="ku2-yM-ucm"/>
                         <outlet property="marketcaplabel" destination="iNe-ke-8c1" id="Exc-eg-Ltq"/>
                         <outlet property="onehrperlabel" destination="Ea9-WK-flS" id="hQQ-gC-TX0"/>
                         <outlet property="pricelabel" destination="Btn-Bi-rqz" id="rqt-si-F54"/>
                         <outlet property="refView4Chart" destination="mIP-Qj-nfh" id="mEL-Ua-1xX"/>
                         <outlet property="sevendayperlabel" destination="bwa-Z9-ooP" id="bVv-HA-vPu"/>
+                        <outlet property="showpricelabel" destination="6Mv-XR-1z6" id="E5r-Hl-JSF"/>
                         <outlet property="twentyfourhrperlabel" destination="zuz-d9-Pzn" id="QoY-lY-Cit"/>
                         <outlet property="twentyfourvolabel" destination="IAg-cq-pDA" id="mcH-i0-4hh"/>
                         <outlet property="webView" destination="Q2X-uQ-e5F" id="eUd-bw-OOO"/>

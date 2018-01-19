@@ -8,6 +8,7 @@
 
 #import "MoreInfoViewController.h"
 @import Lottie;
+@import CCDropDownMenus;
 @import Charts;
 #import "DateValueFormatter.h"
 @import GoogleMobileAds;
@@ -34,6 +35,7 @@ NSMutableArray *marketcap;
     NSMutableArray *temparr;
     NSMutableArray *symbol;
     NSString *id4api;
+    NSArray *dataops;
     NSString *init;
     NSString *tickerapi;
     UIView* coverView;
@@ -51,11 +53,42 @@ NSMutableArray *marketcap;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
-  
-
- 
-
+    dataops =  @[@"1 Day", @"7 Days", @"1 Month",@"3 Months",@"6 Months",@"1 Year",@"All data"];
+}
+-(UIColor*)colorWithHexString:(NSString*)hex
+{
+    NSString *cString = [[hex stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
+    
+    // String should be 6 or 8 characters
+    if ([cString length] < 6) return [UIColor grayColor];
+    
+    // strip 0X if it appears
+    if ([cString hasPrefix:@"0X"]) cString = [cString substringFromIndex:2];
+    
+    if ([cString length] != 6) return  [UIColor grayColor];
+    
+    // Separate into r, g, b substrings
+    NSRange range;
+    range.location = 0;
+    range.length = 2;
+    NSString *rString = [cString substringWithRange:range];
+    
+    range.location = 2;
+    NSString *gString = [cString substringWithRange:range];
+    
+    range.location = 4;
+    NSString *bString = [cString substringWithRange:range];
+    
+    // Scan values
+    unsigned int r, g, b;
+    [[NSScanner scannerWithString:rString] scanHexInt:&r];
+    [[NSScanner scannerWithString:gString] scanHexInt:&g];
+    [[NSScanner scannerWithString:bString] scanHexInt:&b];
+    
+    return [UIColor colorWithRed:((float) r / 255.0f)
+                           green:((float) g / 255.0f)
+                            blue:((float) b / 255.0f)
+                           alpha:1.0f];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     if (self.isMovingFromParentViewController) {
@@ -82,6 +115,10 @@ NSMutableArray *marketcap;
     //init graph
    //graph = [[MultiLineGraphView alloc] initWithFrame:self.refView4Chart.frame];
     // Do any additional setup after loading the view.
+    
+    //Seting up dropdown for selecting time period of graph data.
+
+
     
 }
 -(void)getgraphdata:(NSString*)his_dur{
@@ -190,6 +227,17 @@ NSMutableArray *marketcap;
             }
             else{
                  [self stoploader];
+            
+             self.dropref.delegate = self;
+                self.dropref.title = @"3 Months";
+                self.dropref.numberOfRows = 7;
+                self.dropref.backgroundColor =[self colorWithHexString:@"#37474F"];
+                self.dropref.tintColor =[self colorWithHexString:@"#37474F"];
+               self.dropref.seperatorColor = [UIColor whiteColor];
+                self.dropref.activeColor = [self colorWithHexString:@"#039BE5"];
+                self.dropref.inactiveColor = [self colorWithHexString:@"616161"];
+                self.dropref.textOfRows = dataops;
+                //[self.view addSubview:menu];
                 [self createlinegrph];
                 
             }
@@ -200,6 +248,9 @@ NSMutableArray *marketcap;
     //pretty self explanatory
     
   
+}
+- (void)dropDownMenu:(CCDropDownMenu *)dropDownMenu didSelectRowAtIndex:(NSInteger)index {
+    NSLog(@"%ld",(long)index);
 }
 -(UIColor *)averageColorOfImage:(UIImage*)image{
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -241,9 +292,7 @@ NSMutableArray *marketcap;
     NSMutableArray *dataSets = [[NSMutableArray alloc] init];
     [dataSets addObject:dataset];
     linechart.delegate = self;
-
     LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
-//    [linechart.xAxis setLabelCount:arraytt.count force:TRUE];
     DateValueFormatter *formatter2;
     formatter2 = [[DateValueFormatter alloc] init];
     linechart.xAxis.valueFormatter = formatter2;
@@ -263,8 +312,15 @@ NSMutableArray *marketcap;
 }
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
+    double unixTimeStamp =entry.x;
+    NSTimeInterval timeInterval=unixTimeStamp/1000;
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    NSDateFormatter *dateformatter=[[NSDateFormatter alloc]init];
+    [dateformatter setLocale:[NSLocale currentLocale]];
+    [dateformatter setDateFormat:@"dd-MM-yyyy"];
+    NSString *dateString=[dateformatter stringFromDate:date];
     
-    NSLog(@"%f",entry.y);
+    self.showpricelabel.text = [NSString stringWithFormat:@"Price:$%0.2f Date:%@",entry.y,dateString];
 }
 -(void)showloader{
     // get your window screen size
@@ -427,62 +483,9 @@ NSMutableArray *marketcap;
 
 
 
-- (IBAction)daybtn:(id)sender {
-//    BOOL doesContain = [self.view.subviews containsObject:graph];
-//    if(doesContain){
-//        [graph removeFromSuperview];
-//    }
-//     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"1day"];
-//       // [graph reloadGraph];
-}
 
-- (IBAction)day7btn:(id)sender {
-//    BOOL doesContain = [self.view.subviews containsObject:graph];
-//    if(doesContain){
-//        [graph removeFromSuperview];
-//    }
-//     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"7day"];
-//     //   [graph reloadGraph];
-}
+- (IBAction)ShowDropDown:(id)sender {
 
-- (IBAction)month1btn:(id)sender {
-//   // BOOL doesContain = [self.view.subviews containsObject:graph];
-//    if(doesContain  == YES){
-//       // [graph removeFromSuperview];
-//    }
-//    [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"30day"];
-//   //  [graph reloadGraph];
-    }
-
-
-- (IBAction)month3btn:(id)sender {
-//    //BOOL doesContain = [self.view.subviews containsObject:graph];
-//    if(doesContain){
-//        //[graph removeFromSuperview];
-//       // [graph setHidden:YES];
-//       // [self.view sendSubviewToBack:graph];
-//    }
-//     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"90day"];
-//      //  [graph reloadGraph];
-}
-
-- (IBAction)month6btn:(id)sender {
-//BOOL doesContain = [self.view.subviews containsObject:];
-//    if(doesContain){
-//        //[graph removeFromSuperview];
-//    }
-//     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"180day"];
-//       //  [graph reloadGraph];
-}
-
-- (IBAction)year1btn:(id)sender {
-//   // BOOL doesContain = [self.view.subviews containsObject:graph];
-//    if(doesContain){
-//       // [graph removeFromSuperview];
-//    }
-//     [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"360day"];
-//      //  [graph reloadGraph];
-}
-- (IBAction)alldatabtn:(id)sender {
+ 
 }
 @end
