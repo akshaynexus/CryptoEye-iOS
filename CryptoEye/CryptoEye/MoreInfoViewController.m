@@ -10,7 +10,6 @@
 @import Lottie;
 @import Charts;
 @import GoogleMobileAds;
-@import drCharts;
 @import MaterialComponents;
 #define SECS_PER_DAY (86400)
 @interface MoreInfoViewController ()
@@ -81,7 +80,7 @@ NSMutableArray *marketcap;
     //setting data from the recived vals from tableview
       [self getid4api];
     //init graph
-    graph = [[MultiLineGraphView alloc] initWithFrame:self.refView4Chart.frame];
+   //graph = [[MultiLineGraphView alloc] initWithFrame:self.refView4Chart.frame];
     // Do any additional setup after loading the view.
     
 }
@@ -241,7 +240,28 @@ NSMutableArray *marketcap;
     [linechart.rightAxis setEnabled:NO];
     NSMutableArray *dataSets = [[NSMutableArray alloc] init];
     [dataSets addObject:dataset];
+                NSMutableArray *array = [[NSMutableArray alloc] init];
+    //            array = time4graph;
+    //            for (NSMutableArray *tempObject in price4rmapi) {
+    //
+    //                [array addObject:[tempObject objectAtIndex:0]]];
+    //            }
+                for (int index = 0; index <[time4graph count]; index++) {
+                    NSString *time = [NSString stringWithFormat:@"%@",[time4graph objectAtIndex:index]];
+                    double unixTimeStamp =[time doubleValue];
+                    NSTimeInterval timeInterval=unixTimeStamp/1000;
+                    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+                    NSDateFormatter *dateformatter=[[NSDateFormatter alloc]init];
+                    [dateformatter setLocale:[NSLocale currentLocale]];
+                    [dateformatter setDateFormat:@"dd-MM-yyyy"];
+                    NSString *dateString=[dateformatter stringFromDate:date];
+                    array[index] = [NSString stringWithFormat:@"%@",dateString] ;
+                }
+
     LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
+    [linechart.xAxis setLabelCount:array.count force:TRUE];
+    linechart.xAxis.valueFormatter = [ChartIndexAxisValueFormatter withValues:array];
+    linechart.xAxis.drawLabelsEnabled = TRUE;
     linechart.data = data;
     [self.view addSubview:linechart];
 }
@@ -313,7 +333,7 @@ NSMutableArray *marketcap;
                     per7d = [jsonArray valueForKey: @"percent_change_7d"];
                     symbol = [jsonArray valueForKey: @"symbol"];
                     
-                    [self getgraphdata:@"90day"];
+                    [self getgraphdata:@"30day"];
                     
                     
                     

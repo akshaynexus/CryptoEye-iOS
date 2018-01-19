@@ -1,4 +1,7 @@
 PODS:
+  - Charts (3.0.5):
+    - Charts/Core (= 3.0.5)
+  - Charts/Core (3.0.5)
   - drCharts (1.4)
   - Firebase/AdMob (4.8.0):
     - Firebase/Core
@@ -393,6 +396,7 @@ PODS:
     - ios-versioncheck (~> 1.0.1)
 
 DEPENDENCIES:
+  - Charts (~> 3.0.4)
   - drCharts (from `https://github.com/Zomato/DR-charts.git`)
   - Firebase/AdMob
   - Firebase/Core
@@ -412,6 +416,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/Zomato/DR-charts.git
 
 SPEC CHECKSUMS:
+  Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
   drCharts: fd568784a514819ea7af12aabdd67e00ac359370
   Firebase: 710decbbc6d9d48530e9a5dba3209740c3532e05
   FirebaseAnalytics: 5b02a63ead2c3f0259cfc7f15e053e440587ecf8
@@ -434,6 +439,6 @@ SPEC CHECKSUMS:
   SCLAlertView-Objective-C: 0e54351fa4f98a5c7c6ad3727e6dbb46784534e5
   uikit-utils: 301717f97302d5a1fe0234e3316b9ca2c3794244
 
-PODFILE CHECKSUM: fc7ebab9c7abe2ff8bf9f35d13a7a2248f10e277
+PODFILE CHECKSUM: 4bf4599196423de4627e846734ca1c06ad8f22be
 
 COCOAPODS: 1.1.1
