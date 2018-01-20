@@ -27,7 +27,6 @@
 @property (nonatomic, strong) NSString *coinid4api;
 @property (nonatomic, strong) NSString *coinshrt;
 @property (nonatomic, strong) NSString *imageName;
-@property (strong, nonatomic) IBOutlet UIView *refView4Chart;
 @property (nonatomic,strong) NSNumber *intt;
 @property (nonatomic,strong) NSDateFormatter *formatter;
 @property (strong, nonatomic) IBOutlet UIButton *btn1;
@@ -40,6 +39,7 @@
 @property (strong, nonatomic) IBOutlet GADBannerView *bannerView;
 @property(nonatomic, strong) GADInterstitial*interstitial;
 @property (weak, nonatomic) IBOutlet ManaDropDownMenu *dropref;
+@property (weak, nonatomic) IBOutlet LineChartView *chartView;
 
 
 

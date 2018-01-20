@@ -118,7 +118,16 @@ NSMutableArray *marketcap;
     
     //Seting up dropdown for selecting time period of graph data.
 
-
+    self.dropref.delegate = self;
+    self.dropref.title = @"1 Month";
+    self.dropref.numberOfRows = 7;
+    self.dropref.backgroundColor =[self colorWithHexString:@"#37474F"];
+    // self.dropref.tintColor =[self colorWithHexString:@"#37474F"];
+    self.dropref.seperatorColor = [UIColor whiteColor];
+    //self.dropref.activeColor = [self colorWithHexString:@"#039BE5"];
+    //self.dropref.inactiveColor = [self colorWithHexString:@"616161"];
+    self.dropref.textOfRows = dataops;
+    //[self.view addSubview:menu];
     
 }
 -(void)getgraphdata:(NSString*)his_dur{
@@ -138,8 +147,11 @@ NSMutableArray *marketcap;
         else if ([his_dur isEqualToString:@"180day"]){
             graphapi = [NSString stringWithFormat:@"http://www.coincap.io/history/180day/%@",self.coinshrt];
         }
-        else if ([his_dur isEqualToString:@"360day"]){
-            graphapi = [NSString stringWithFormat:@"http://www.coincap.io/history/360day/%@",self.coinshrt];
+        else if ([his_dur isEqualToString:@"365day"]){
+            graphapi = [NSString stringWithFormat:@"http://www.coincap.io/history/365day/%@",self.coinshrt];
+        }
+        else if ([his_dur isEqualToString:@"all"]){
+            graphapi = [NSString stringWithFormat:@"http://www.coincap.io/history/%@",self.coinshrt];
         }
         else {
             graphapi = [NSString stringWithFormat:@"http://www.coincap.io/history/1day/%@",self.coinshrt];
@@ -167,14 +179,16 @@ NSMutableArray *marketcap;
             if (error) {
                 error2 = YES;
                 //handle if no graph is available for the particular coin
-                UILabel *label = [[UILabel alloc]initWithFrame:self.refView4Chart.frame];
-                label.textColor = [UIColor whiteColor];
-                label.text = [NSString stringWithFormat:@"No graph data for %@",self.coinlabel.text];
-                label.textAlignment = NSTextAlignmentCenter;
-                
-                [self.view addSubview:label];
+//                UILabel *label = [[UILabel alloc]initWithFrame:self.chartView.frame];
+//                label.textColor = [UIColor whiteColor];
+//                label.text = [NSString stringWithFormat:@"No graph data for %@",self.coinlabel.text];
+//                label.textAlignment = NSTextAlignmentCenter;
+//
+//                [self.view addSubview:label];
                 MDCSnackbarMessage *message = [[MDCSnackbarMessage alloc] init];
-                message.text = label.text;
+                message.text = [NSString stringWithFormat:@"No graph data for %@",self.coinlabel.text];
+                self.chartView.noDataText = [NSString stringWithFormat:@"No graph data for %@",self.coinlabel.text];
+                self.chartView.noDataTextColor = [UIColor whiteColor];
                 [MDCSnackbarManager showMessage:message];
                 self.btn1.hidden = YES;
                 self.btn2.hidden = YES;
@@ -224,20 +238,14 @@ NSMutableArray *marketcap;
         dispatch_async(dispatch_get_main_queue(), ^(void){
             if(error2 == YES){
                 [self stoploader];
+              
+                [self.dropref setHidden:YES];
             }
             else{
                  [self stoploader];
-            
-             self.dropref.delegate = self;
-                self.dropref.title = @"3 Months";
-                self.dropref.numberOfRows = 7;
-                self.dropref.backgroundColor =[self colorWithHexString:@"#37474F"];
-                self.dropref.tintColor =[self colorWithHexString:@"#37474F"];
-               self.dropref.seperatorColor = [UIColor whiteColor];
-                self.dropref.activeColor = [self colorWithHexString:@"#039BE5"];
-                self.dropref.inactiveColor = [self colorWithHexString:@"616161"];
-                self.dropref.textOfRows = dataops;
-                //[self.view addSubview:menu];
+             [self.dropref setHidden:NO];
+                
+             
                 [self createlinegrph];
                 
             }
@@ -250,7 +258,41 @@ NSMutableArray *marketcap;
   
 }
 - (void)dropDownMenu:(CCDropDownMenu *)dropDownMenu didSelectRowAtIndex:(NSInteger)index {
-    NSLog(@"%ld",(long)index);
+    
+    switch (index) {
+        case 0:
+            [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"1day"];
+            self.dropref.title = @"1 Day";
+            break;
+        case 1:
+            [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"7day"];
+                 self.dropref.title = @"7 Days";
+            break;
+        case 2:
+            [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"30day"];
+                 self.dropref.title = @"1 Month";
+            break;
+        case 3:
+            [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"90day"];
+                 self.dropref.title = @"3 Months";
+            break;
+        case 4:
+            [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"180day"];
+                 self.dropref.title = @"6 Months";
+            break;
+        case 5:
+            [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"365day"];
+                 self.dropref.title = @"1 Year";
+             break;
+        case 6:
+            [self performSelectorInBackground:@selector(getgraphdata:) withObject:@"all"];
+                 self.dropref.title = @"All Data";
+            break;
+          
+        default:
+              self.dropref.title = @"1 Month";
+            break;
+    }
 }
 -(UIColor *)averageColorOfImage:(UIImage*)image{
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -274,7 +316,7 @@ NSMutableArray *marketcap;
     }
 }
 -(void)createlinegrph{
-    LineChartView *linechart =[[LineChartView alloc] initWithFrame:self.refView4Chart.frame];
+    LineChartView *linechart = self.chartView;
     
     LineChartDataSet *dataset = (LineChartDataSet *)linechart.data.dataSets[0];
     dataset = [[LineChartDataSet alloc] initWithValues:values label:@"DataSet 1"];
@@ -297,13 +339,15 @@ NSMutableArray *marketcap;
     formatter2 = [[DateValueFormatter alloc] init];
     linechart.xAxis.valueFormatter = formatter2;
     linechart.xAxis.granularity = 10;
-   
+    linechart.noDataText = [NSString stringWithFormat:@"No graph data for %@",self.coinlabel.text];
     linechart.xAxis.granularityEnabled = true;
     linechart.drawMarkers = true;
     linechart.xAxis.avoidFirstLastClippingEnabled = false;
     linechart.xAxis.drawLabelsEnabled = TRUE;
     linechart.data = data;
-    [self.view addSubview:linechart];
+    self.chartView = linechart;
+    [self.chartView animateWithXAxisDuration:2];
+   // [self.view addSubview:linechart];
 }
 -(void)stoploader{
     //pretty self explanatory

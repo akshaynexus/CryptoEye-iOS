@@ -159,6 +159,7 @@
 		BA85445620039DB9000760E0 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA85445520039DB9000760E0 /* AboutViewController.m */; };
 		BABDC92320010C6100F246AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BABDC92220010C6100F246AB /* GoogleService-Info.plist */; };
 		BABDC92820012F5500F246AB /* loader_spinner.json in Resources */ = {isa = PBXBuildFile; fileRef = BABDC92720012F5400F246AB /* loader_spinner.json */; };
+		BAC2E16F20135E87004422B9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC2E16E20135E87004422B9 /* StoreKit.framework */; };
 		BAF004962012067A00AF0B16 /* DateValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF004902012067600AF0B16 /* DateValueFormatter.m */; };
 		BAF004972012067A00AF0B16 /* IntAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF004922012067800AF0B16 /* IntAxisValueFormatter.m */; };
 		BAF004982012067A00AF0B16 /* DayAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF004932012067900AF0B16 /* DayAxisValueFormatter.m */; };
@@ -346,6 +347,7 @@
 		BABDC92220010C6100F246AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BABDC92420010D9C00F246AB /* CryptoEye.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CryptoEye.entitlements; sourceTree = "<group>"; };
 		BABDC92720012F5400F246AB /* loader_spinner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader_spinner.json; sourceTree = "<group>"; };
+		BAC2E16E20135E87004422B9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BAF004902012067600AF0B16 /* DateValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateValueFormatter.m; sourceTree = "<group>"; };
 		BAF004912012067700AF0B16 /* DateValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateValueFormatter.h; sourceTree = "<group>"; };
 		BAF004922012067800AF0B16 /* IntAxisValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntAxisValueFormatter.m; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAC2E16F20135E87004422B9 /* StoreKit.framework in Frameworks */,
 				BA1FC32A200204DF00D3694C /* SystemConfiguration.framework in Frameworks */,
 				BA12059F1FE1029500361612 /* libsqlite3.tbd in Frameworks */,
 				FC859A1270AF499A1F6E89D1 /* Pods_CryptoEye.framework in Frameworks */,
@@ -588,6 +591,7 @@
 		C3517E353AC9262F262F518C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BAC2E16E20135E87004422B9 /* StoreKit.framework */,
 				BA1FC329200204DF00D3694C /* SystemConfiguration.framework */,
 				BA6AC6A21FFFF80900D8528E /* MobileCoreServices.framework */,
 				BA12059B1FE1027300361612 /* libsqlite3.0.tbd */,
@@ -611,6 +615,7 @@
 				3823EAA15918008F29DF716E /* [CP] Embed Pods Frameworks */,
 				5956C4704E3089361A60DC64 /* [CP] Copy Pods Resources */,
 				BAE6719D2010E73E001F9B7E /* Embed Frameworks */,
+				BAC2E16D20134905004422B9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -860,6 +865,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		BAC2E16D20134905004422B9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -951,7 +969,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1001,7 +1019,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.0;

@@ -173,13 +173,14 @@ static CGFloat const seperatorWidth = 1;
         [self insertSubview:cell atIndex:0];
         [self.listViews addObject:cell];
         self.titleLabel.textColor = [UIColor whiteColor];
-        self.titleView.backgroundColor = [self colorWithHexString:@"455A64"];;
+        self.titleView.backgroundColor = [self colorWithHexString:@"#607D8B"];
+         [self updateForColor:[self colorWithHexString:@"#607D8B"]];
     }
 }
 
 - (void)titleViewTapped:(UITapGestureRecognizer *)tapGestureRecognizer {
     self.isExpanded?[self animateForClose]:[self animateForExpansion];
-    [self updateForColor:self.isExpanded?self.inactiveColor:self.activeColor];
+   // [self updateForColor:self.isExpanded?self.inactiveColor:self.activeColor];
     
     self.expanded = !self.isExpanded;
 }
@@ -188,13 +189,12 @@ static CGFloat const seperatorWidth = 1;
     NSDictionary *userInfo = notification.userInfo;
     NSInteger index = [[userInfo objectForKey:@"index"] integerValue];
     CCDropDownMenuCell *cell = [userInfo objectForKey:@"cell"];
-    
     if ([self.listViews containsObject:cell]) {
         self.expanded = NO;
+        self.titleLabel.textColor = [UIColor whiteColor];
         self.title = cell.text;
         [self animateForClose];
-        [self updateForColor:self.inactiveColor];
-        
+       
         if ([self.delegate respondsToSelector:@selector(dropDownMenu:didSelectRowAtIndex:)]) {
             [self.delegate dropDownMenu:self didSelectRowAtIndex:index];
         }
@@ -245,8 +245,8 @@ static CGFloat const seperatorWidth = 1;
 
 - (void)updateForColor:(UIColor *)color {
     self.titleLabel.textColor = [UIColor whiteColor];
-    self.titleView.backgroundColor = [self colorWithHexString:@"455A64"];;
-    self.indicatorView.tintColor = color;
+    self.titleView.backgroundColor = [self colorWithHexString:@"455A64"];
+    self.indicatorView.tintColor = [self colorWithHexString:@"455A64"];
 }
 
 - (void)animateForExpansion {
@@ -267,7 +267,6 @@ static CGFloat const seperatorWidth = 1;
             cell.frame = CGRectSetHeight(cell.frame, height);
             [cell setNeedsDisplay];
             cell.frame = CGRectOffset(cell.frame, 0, CGRectGetHeight(self.titleView.frame)+index*height+(index+1)*self.gutter);
-            
             if (self.gutter == 0) {
                 cell.borderWidth = 0.5;
                 self.borderLayer.borderWidth = 0.5;

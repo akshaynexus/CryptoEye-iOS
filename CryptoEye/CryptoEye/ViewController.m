@@ -12,6 +12,8 @@
 #import "MoreInfoViewController.h"
 #import "AnimLoaderViewController.h"
 @import Lottie;
+@import Firebase;
+
 #import <tgmath.h>
 #import "AboutViewController.h"
 
@@ -46,9 +48,23 @@ NSMutableArray *shrt_form;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    ++i;
     self.interstitial =[self createAndLoadInterstitial];
-
-
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]){
+         [[NSUserDefaults standardUserDefaults] setInteger:0  forKey:@"launch_count"];
+    }
+    else{
+        [[NSUserDefaults standardUserDefaults] setInteger:[[NSUserDefaults standardUserDefaults] integerForKey:@"launch_count"] + 1 forKey:@"launch_count"];
+    }
+   
+    if([[NSUserDefaults standardUserDefaults] integerForKey:@"launch_count"]%6){
+          [SKStoreReviewController requestReview];
+    }
     GADRequest *request = [GADRequest request];
     [self.interstitial loadRequest:request];
       self.bannerView.rootViewController = self;
@@ -63,7 +79,7 @@ NSMutableArray *shrt_form;
     }
     else{
        
-       
+       [self getdatatable];
       [self.tableCvi reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
          i++;
       
@@ -200,6 +216,9 @@ iconfm =  shrt_form[indexPath.row];
 -(void)showloader{
     // get your window screen size
     CGRect screenRect = [[UIScreen mainScreen] bounds];
+
+//    NSString *fcmToken = [[FIRMessaging messaging] FCMToken];
+//    NSLog(@"FCM registration token: %@", fcmToken);
     //create a new view with the same size
     coverView = [[UIView alloc] initWithFrame:screenRect];
     animation = [LOTAnimationView animationNamed:@"loader_ring"];

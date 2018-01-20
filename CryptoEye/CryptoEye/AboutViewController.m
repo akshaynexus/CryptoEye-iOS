@@ -39,14 +39,14 @@
 
 - (IBAction)copybtcadddratc:(id)sender {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = @"3NTPeXYfFe2cBM782jJcsh4bmAxCgD44uE";
+    pasteboard.string = @"15GyMHqsGBJMFaY7pjSFGrB99zxSjX3Kvq";
     MDCSnackbarMessage *message = [[MDCSnackbarMessage alloc] init];
     message.text = @"Address has been copied to clipboard,Thanks for donating !";
     [MDCSnackbarManager showMessage:message];
 }
 
 - (IBAction)altcoindonate:(id)sender {
-    NSURL* url = [[NSURL alloc] initWithString: @"https://shapeshift.io/shifty.html?destination=3NTPeXYfFe2cBM782jJcsh4bmAxCgD44uE&output=BTC"];
+    NSURL* url = [[NSURL alloc] initWithString: @"https://shapeshift.io/shifty.html?destination=15GyMHqsGBJMFaY7pjSFGrB99zxSjX3Kvq&output=BTC"];
     MDCSnackbarMessage *message = [[MDCSnackbarMessage alloc] init];
     message.text = @"Thanks for donating !";
     [MDCSnackbarManager showMessage:message];

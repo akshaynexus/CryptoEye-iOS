@@ -43,7 +43,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // [START configure_firebase]
     [FIRApp configure];
     // [END configure_firebase]
-
+  
 
     // [START set_messaging_delegate]
     [FIRMessaging messaging].delegate = self;
@@ -52,6 +52,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Register for remote notifications. This shows a permission dialog on first run, to
     // show the dialog at a more appropriate time move this registration accordingly.
         [GADMobileAds configureWithApplicationID:@"ca-app-pub-9656245162764779~7585930923"];
+        [[FIRMessaging messaging] subscribeToTopic:@"cryptonews"];
+
     if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1) {
         // iOS 7.1 or earlier. Disable the deprecation warnings.
 #pragma clang diagnostic push

@@ -3,7 +3,10 @@ PODS:
   - Charts (3.0.5):
     - Charts/Core (= 3.0.5)
   - Charts/Core (3.0.5)
+  - Crashlytics (3.9.3):
+    - Fabric (~> 1.7.2)
   - drCharts (1.4)
+  - Fabric (1.7.2)
   - Firebase/AdMob (4.8.0):
     - Firebase/Core
     - Google-Mobile-Ads-SDK (= 7.27.0)
@@ -13,6 +16,9 @@ PODS:
   - Firebase/Messaging (4.8.0):
     - Firebase/Core
     - FirebaseMessaging (= 2.0.8)
+  - Firebase/Performance (4.8.0):
+    - Firebase/Core
+    - FirebasePerformance (= 1.1.0)
   - FirebaseAnalytics (4.0.5):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -28,12 +34,22 @@ PODS:
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - Protobuf (~> 3.1)
+  - FirebasePerformance (1.1.0):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - FirebaseSwizzlingUtilities (~> 1.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - GTMSessionFetcher/Core (~> 1.1)
+    - Protobuf (~> 3.1)
+  - FirebaseSwizzlingUtilities (1.0.0)
   - Google-Mobile-Ads-SDK (7.27.0)
   - GoogleToolboxForMac/Defines (2.1.3)
   - GoogleToolboxForMac/Logger (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
   - GoogleToolboxForMac/NSData+zlib (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
+  - GTMSessionFetcher/Core (1.1.12)
   - ios-linechart (1.3.2):
     - uikit-utils (~> 0.5.1)
   - ios-versioncheck (1.0.1)
@@ -400,10 +416,13 @@ PODS:
 DEPENDENCIES:
   - CCDropDownMenus
   - Charts (~> 3.0.4)
+  - Crashlytics (~> 3.9.3)
   - drCharts (from `https://github.com/Zomato/DR-charts.git`)
+  - Fabric (~> 1.7.2)
   - Firebase/AdMob
   - Firebase/Core
   - Firebase/Messaging
+  - Firebase/Performance
   - ios-linechart (~> 1.3)
   - lottie-ios
   - MaterialComponents
@@ -422,14 +441,19 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   CCDropDownMenus: ee65b63286a16354907fdde49c40c1817f463470
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
+  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   drCharts: fd568784a514819ea7af12aabdd67e00ac359370
+  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   Firebase: 710decbbc6d9d48530e9a5dba3209740c3532e05
   FirebaseAnalytics: 5b02a63ead2c3f0259cfc7f15e053e440587ecf8
   FirebaseCore: 3c02ec652db3d03fdc8bc6d9154af3e20d64b6f5
   FirebaseInstanceID: 81df5805a08001e69138664bdd02c6719a9ac80f
   FirebaseMessaging: dfdcd307c2382290a1e297a81d0f18370f5b1bcd
+  FirebasePerformance: 3877d097c59956aa2d7a317dbae503c2b4e78459
+  FirebaseSwizzlingUtilities: f1c49a5a372ac852c853722a5891a0a5e2344a6c
   Google-Mobile-Ads-SDK: 83f7f890e638ce8f1debd440ea363338c9f6be3b
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   ios-linechart: 8f5a932e2d3e46a2f0c65f1cbc4aa7bc8a26e28b
   ios-versioncheck: bca7254bd6855e6b713493d958281d3c57507103
   lottie-ios: 836cdbba92f62f3c6a00e37a4ce485321fe317cf
@@ -445,6 +469,6 @@ SPEC CHECKSUMS:
   TOMSMorphingLabel: 3e88a2bf5257f8993ebc51fb3109187a0bfb2c4d
   uikit-utils: 301717f97302d5a1fe0234e3316b9ca2c3794244
 
-PODFILE CHECKSUM: 8514a0fc82e7fb01a29b9d2f31d770372d9b341a
+PODFILE CHECKSUM: b2306ec3650a3a1116e640dedac4a229f76d63ae
 
 COCOAPODS: 1.1.1

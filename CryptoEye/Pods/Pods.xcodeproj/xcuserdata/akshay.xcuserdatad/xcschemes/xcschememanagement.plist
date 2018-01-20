@@ -7,12 +7,12 @@
 		<key>CCDropDownMenus.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Charts.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<key>DropDown.xcscheme</key>
 		<dict>
@@ -20,6 +20,11 @@
 			<integer>3</integer>
 		</dict>
 		<key>FSLineChart.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>GTMSessionFetcher.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
@@ -137,7 +142,7 @@
 		<key>TOMSMorphingLabel.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>26</integer>
 		</dict>
 		<key>UICountingLabel.xcscheme</key>
 		<dict>
@@ -147,7 +152,7 @@
 		<key>drCharts.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>4</integer>
 		</dict>
 		<key>ios-linechart.xcscheme</key>
 		<dict>
@@ -172,7 +177,7 @@
 		<key>uikit-utils.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>26</integer>
+			<integer>27</integer>
 		</dict>
 	</dict>
 </dict>

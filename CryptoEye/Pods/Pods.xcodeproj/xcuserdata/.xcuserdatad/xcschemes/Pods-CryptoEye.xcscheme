@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F790CBB3EE693CEF4C317B553C8609C2'
+               BlueprintIdentifier = 'B823B9EE83A5C37D6E2569C311B1292F'
                BlueprintName = 'Pods-CryptoEye'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods-CryptoEye.framework'>
